@@ -11,14 +11,9 @@ export default ({ children }) => (
             <h3
               style={{
                 marginBottom: "3rem",
-                // borderBottom: "3px solid #3273dc",
-                // borderBottom: "2px solid #aaa",
-                // borderBottom: "2px solid #0f72e4",
                 borderBottom: "2px solid #209cee",
-                // textTransform: "uppercase",
                 marginRight: "2.5rem",
                 color: "#363636",
-                // fontFamily: "Fira Mono, monospace",
                 fontFamily: "Fira Sans, sans-serif",
               }}
             >

@@ -1,32 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
-// import { Button } from "@material-ui/core"
-// import "../styles/bulma.css"
 
 import Layout from "../components/layout"
 import Title from "../components/title"
 import PostLink from "../components/post-link"
+import TagButton from "../components/tag-button"
 
 class tagsPage extends React.Component {
   state = {
     currentTags: [],
-    totalPosts: 0,
-  }
-
-  // updateTotalPosts = () => {
-  //   this.setState(({ totalPosts }) => ({
-  //     totalPosts: document.getElementsByName("aPost").length,
-  //   }))
-  // }
-
-  // addPostToTotal = () => {
-  //   this.setState((prevState, { totalPosts }) => ({
-  //     totalPosts: prevState.totalPosts + 1,
-  //   }))
-  // }
-
-  resetTotal = () => {
-    console.log("I reset the total")
   }
 
   handleClick = event => {
@@ -55,7 +37,7 @@ class tagsPage extends React.Component {
 
   render() {
     // console.log(this.props)
-    // console.log("latest state: ", this.state)
+    // console.log(this.state)
     console.log("latest tags: ", this.state.currentTags)
     return (
       <Layout>
@@ -63,20 +45,14 @@ class tagsPage extends React.Component {
         <TagButton onClick={this.handleClick} name={"hello"} id={"hello"} />
         <TagButton onClick={this.handleClick} name={"world"} id={"world"} />
         <div style={{ marginTop: "3rem" }}>
-          {/* <h4>{this.state.totalPosts} Posts</h4> */}
           <h4 id="numberOfPosts">0 Posts</h4>
-          {/* <h4>{document.getElementsByName("aPost").length} Posts</h4> */}
-          {/* <h4>{this.props.data.allMarkdownRemark.totalCount} Posts</h4> */}
           {this.props.data.allMarkdownRemark.edges.map(({ node }) => {
             const found = node.frontmatter.tags.some(r =>
               this.state.currentTags.includes(r)
             )
             if (found) {
-              // this.addPostToTotal()
-              // this.updateTotalPosts()
               return <PostLink node={node} name={"aPost"} />
             } else {
-              // this.resetTotal()
               return null
             }
           })}
@@ -94,19 +70,6 @@ class tagsPage extends React.Component {
     }
   }
 }
-
-const TagButton = props => (
-  <button
-    onClick={props.onClick}
-    type="button"
-    style={{ marginRight: "0.5rem" }}
-    name={props.name}
-    id={props.id}
-    className="button is-primary is-small is-outlined"
-  >
-    {props.name}
-  </button>
-)
 
 export default tagsPage
 

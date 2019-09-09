@@ -22,9 +22,6 @@ function PostLink({ node, name }) {
             {node.frontmatter.title}
           </span>
           <div class="tags">
-            {/* <span class="tag">One</span>
-            <span class="tag">Two</span>
-            <span class="tag">Three</span> */}
             <span style={{ fontWeight: "700", color: "#bdbdbd" }}>
               {node.frontmatter.date}
             </span>
