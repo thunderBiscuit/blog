@@ -1,9 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
 
-import lightning from "./lightning.png"
+import "../styles/mystyles.scss"
+import "../styles/global.css"
+import lightning from "../../img/lightning.png"
 
-function MainSection() {
+function Blog() {
   return (
     <Layout>
       <div
@@ -25,11 +27,27 @@ function MainSection() {
           marginBottom: "2rem",
         }}
       >
-        <h1>thunder blogging</h1>
+        <h1 class="title" style={{ marginBottom: "1rem" }}>
+          thunder blogging
+        </h1>
       </div>
-      <p>A blog about all sorts of stuff related to web development.</p>
+      <blockquote>
+        A blog about computers, web development, and satoshis.
+      </blockquote>
+      <br />
+      <br />
+      <p>
+        A blog about all sorts of stuff related to computers, web development,
+        and satoshis. Pork belly poutine drinking vinegar gluten-free taxidermy
+        coloring book messenger bag. Brooklyn brunch gluten-free selfies occupy.
+        Tilde pok pok pug, disrupt trust fund synth literally retro lyft
+        everyday carry flexitarian pour-over four dollar toast bitters. Tattooed
+        woke pabst ugh marfa glossier listicle. Listicle taxidermy glossier
+        heirloom, helvetica vaporware try-hard lumbersexual dreamcatcher
+        asymmetrical.
+      </p>
     </Layout>
   )
 }
 
-export default MainSection
+export default Blog

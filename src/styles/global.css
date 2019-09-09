@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans|Playfair+Display:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono&display=swap");
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #bdbdbd;
+  font-family: "Fira Sans", sans-serif;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #209cee;
+}
+
+p {
+  font-family: "Fira Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #363636;
+}
+
+blockquote {
+  border-left: 10px solid #dbdbdb;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
+.button {
+  font-family: "Fira Mono", monospace;
+}
+
+.tag {
+  font-family: "Fira Mono", monospace;
+}
+
+.maincontainer::before {
+  content: "";
+  display: block;
+  height: 3rem;
+}
+
+.maincontainer::after {
+  content: "";
+  display: block;
+  height: 3rem;
+}
+/*# sourceMappingURL=global.css.map */
