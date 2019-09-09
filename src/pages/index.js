@@ -1,8 +1,8 @@
 import React from "react"
 import Layout from "../components/layout"
 
-import "../styles/mystyles.scss"
-import "../styles/global.css"
+import "../styles/bulma.scss"
+import "../styles/global.scss"
 import lightning from "../../img/lightning.png"
 
 function Blog() {
