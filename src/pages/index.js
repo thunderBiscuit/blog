@@ -1,10 +1,8 @@
 import React from "react"
 import Layout from "../components/layout"
 
-import "../styles/bulma.scss"
 import "../styles/global.scss"
-import typography from "../utils/typography"
-import lightning from "../../img/lightning.png"
+import lightning from "../images/lightning.png"
 
 function Blog() {
   return (
