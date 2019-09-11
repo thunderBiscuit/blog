@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "./layout"
 import Title from "./title"
+import TagsList from "./tags-list"
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -12,6 +13,8 @@ export default ({ data }) => {
         <Title>{post.frontmatter.title}</Title>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
+      <hr />
+      <TagsList>{post.frontmatter}</TagsList>
     </Layout>
   )
 }
@@ -22,6 +25,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        tags
       }
     }
   }
