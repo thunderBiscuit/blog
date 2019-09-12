@@ -41,9 +41,10 @@ class tagsPage extends React.Component {
     console.log("latest tags: ", this.state.currentTags)
     return (
       <Layout>
-        <Title>Tags</Title>
+        <Title>tags</Title>
         <TagButton onClick={this.handleClick} name={"hello"} id={"hello"} />
         <TagButton onClick={this.handleClick} name={"world"} id={"world"} />
+        <TagButton onClick={this.handleClick} name={"gpg"} id={"gpg"} />
         <div style={{ marginTop: "3rem" }}>
           <h4 id="numberOfPosts">0 Posts</h4>
           {this.props.data.allMarkdownRemark.edges.map(({ node }) => {
