@@ -11,7 +11,7 @@ function PostLink({ node, name }) {
           marginTop: "2rem",
         }}
       >
-        <h4
+        <h5
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -26,7 +26,7 @@ function PostLink({ node, name }) {
               {node.frontmatter.date}
             </span>
           </div>
-        </h4>
+        </h5>
       </div>
     </Link>
   )

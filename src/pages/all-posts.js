@@ -7,7 +7,7 @@ import PostLink from "../components/post-link"
 
 export default ({ data }) => (
   <Layout>
-    <Title>All Posts</Title>
+    <Title>all posts</Title>
 
     <div style={{ marginTop: "4rem" }}>
       <h3 style={{ marginBottom: "2rem" }}>

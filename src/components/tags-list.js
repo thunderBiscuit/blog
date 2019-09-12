@@ -7,7 +7,7 @@ function TagsList({ children }) {
       {children.tags.map(tag => {
         // console.log("I am", tag)
         return (
-          <span className="tag" style={{ marginRight: "0.5rem" }}>
+          <span className="tag is-primary" style={{ marginRight: "0.5rem" }}>
             {tag}
           </span>
         )
