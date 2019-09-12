@@ -28,7 +28,8 @@ export default ({ children }) => (
           <br />
           <Link to={`/contact/`}>Contact</Link>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={9} className="content">
+          {/* <Grid item xs={9}> */}
           {children}
         </Grid>
       </Grid>
