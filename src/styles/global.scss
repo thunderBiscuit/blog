@@ -1,5 +1,8 @@
+// @import url("https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono&display=swap");
 // @import url("https://fonts.googleapis.com/css?family=Fira+Mono&display=swap");
+
+// @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap");
 
 body {
   margin: 0;
@@ -7,6 +10,7 @@ body {
 
 p {
   font-family: "Fira Sans", sans-serif;
+  // font-size: 120%;
 }
 
 a {
@@ -20,12 +24,16 @@ a:hover {
   color: #209cee;
 }
 
-blockquote {
+ol {
   font-family: "Fira Sans", sans-serif;
-  border-left: 10px solid #dbdbdb;
-  padding-left: 1rem;
-  font-style: italic;
 }
+
+// blockquote {
+//   font-family: "Fira Sans", sans-serif;
+//   border-left: 10px solid #bdbdbd;
+//   padding-left: 1rem;
+//   font-style: italic;
+// }
 
 .button {
   font-family: "Fira Mono", monospace;
@@ -45,4 +53,8 @@ blockquote {
   content: "";
   display: block;
   height: 3rem;
+}
+
+.blog-post {
+  font-size: 1.1rem;
 }

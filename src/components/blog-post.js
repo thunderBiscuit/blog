@@ -11,7 +11,11 @@ export default ({ data }) => {
     <Layout>
       <div>
         <Title>{post.frontmatter.title}</Title>
-        <div class="content" dangerouslySetInnerHTML={{ __html: post.html }} />
+
+        <div
+          class="content blog-post"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
       </div>
       <hr />
       <TagsList>{post.frontmatter}</TagsList>

@@ -30,9 +30,7 @@ function Blog() {
           thunder blogging
         </h1>
       </div>
-      <blockquote>
-        A blog about computers, web development, and satoshis.
-      </blockquote>
+      <blockquote>A blog about computers, software, and satoshis.</blockquote>
       <br />
       <br />
       <p>
