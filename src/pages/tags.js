@@ -41,7 +41,7 @@ class tagsPage extends React.Component {
     console.log("latest tags: ", this.state.currentTags)
     return (
       <Layout>
-        <Title>tags</Title>
+        <Title>Tags</Title>
         <TagButton onClick={this.handleClick} name={"hello"} id={"hello"} />
         <TagButton onClick={this.handleClick} name={"world"} id={"world"} />
         <TagButton onClick={this.handleClick} name={"gpg"} id={"gpg"} />
