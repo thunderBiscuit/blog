@@ -20,20 +20,20 @@ PGP does much more, but this post is really about those 2 basic tasks.
 
 First, make sure you have gpg installed on your computer. You can get it using homebrew (`brew install gpg`) on MacOS or any of the package managers on Linux (`apt-get gpg` on Ubuntu for example).
 
-```shell
+```bash
 # ensure gpg is installed on your computer
 gpg --version
 ```
 
 The first thing we'll do is create a key. I recommend creating an initial test key with a simple password to use for the rest of this tutorial, and deleting it afterwards.
 
-```
+```bash
 gpg --full-generate-key   # generate a new key
 ```
 
 The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in gpg. To see what keys pairs are in your keyring, simply enter
 
-```
+```bash
 $ gpg --list-keys
 
 pub   rsa1024 2019-09-12 [SC]
@@ -46,7 +46,7 @@ We now have a key pair available to us for the tasks below. The `--list-key` com
 
 One last thing we should mention is that the public key is often shared with others for reasons we'll see further on; you can share your key in binary format, or, often more conveniently, in a text format called ASCII-armor.
 
-```
+```bash
 # generate public key file in binary format
 $ gpg --export MrAnderson > myBinaryPubKey.gpg
 
@@ -89,7 +89,7 @@ One of the common objectives of signatures is to attest that a specific version 
 
 Let us suppose you have a file called `message.txt` you wish to sign.
 
-```
+```bash
 gpg --sign message.txt
 ```
 
@@ -97,13 +97,13 @@ outputs a new file in the same working directory called `message.txt.gpg` that c
 
 You can see the contents of the file using
 
-```
+```bash
 gpg -decrypt message.txt.gpg
 ```
 
 which will print it to the console. You can also output the original data (the message in this case) to a file using
 
-```
+```bash
 gpg --decrypt message.txt.gpg > message_signed.txt
 ```
 
@@ -111,13 +111,13 @@ This will print the verification of the signature to the console as the file is 
 
 Notice that the file output by `gpg --sign message.txt` is in `.gpg` format, a binary format, and so it can be inconvenient to share. Another way to save the file is in ASCII-armor format using the `--armor` command like so:
 
-```
+```bash
 gpg --sign --armor message.txt
 ```
 
 The output file will be `message.txt.asc`, and will look something like this:
 
-```
+```bash
 -----BEGIN PGP MESSAGE-----
 
 owGbwMvMwME4vbHMPzN7+SPGNbJJ3LmpxcWJ6al6JRUlsVVLizNSc3LydRTK84ty
@@ -137,7 +137,7 @@ You can then copy and paste this anywhere to share or store the signed message, 
 
 You can read a signed document without the public key of the signator, but you will not be able to validate its signature.
 
-```sh
+```bash
 gpg --verify message.txt.asc
 # will return an error stating that you do not posess the public
 # key required to validate the signed document
@@ -145,7 +145,7 @@ gpg --verify message.txt.asc
 
 To validate the signature, import the public key of the signator on your gpg keyring (in this case let's assume it's a friend who just sent you their public key in ASCII-armor format):
 
-```
+```bash
 gpg --import morpheusPubKey.asc
 ```
 
@@ -159,13 +159,13 @@ gpg -sign-key morpheusPubKey.asc
 
 Once you have the public key of the signator of the piece of data you wish to verify, you can do so in one line of code:
 
-```
+```bash
 gpg --verify message.txt.asc
 ```
 
 GPG will print the result of the signature verification on the console. In the case of a valid signature, it would look like this:
 
-```
+```bash
 gpg: Signature made Thu 12 Sep 16:07:15 2019 EDT
 gpg:                using RSA key 0294857274CB80C449C45F789781764F696BA7E2
 gpg:                issuer "email@email.com"
@@ -191,7 +191,7 @@ gpg --decrypt message.txt.asc > message.txt
 
 Note that the signature file build in ASCII-armor format does not contain a human readable version of the original data (in this case the string `hello, world`). The file is not encrypted, but you'll need another command to show its content.
 
-```
+```bash
 # create a signature file named message.txt.asc
 $ gpg --sign --armor message.txt
 
@@ -212,7 +212,7 @@ nwMA
 
 Using the `--clearsign` command rather than the `--sign` one on ASCII-armor format to sign a document will include the original data in the signed file. Notice how the resulting file keeps the signed message at the top, making it easy to parse, whether we verify the signature or not.
 
-```
+```bash
 $ gpg --clearsign --armor message.txt
 $ cat message.txt.asc
 
@@ -239,13 +239,13 @@ Detached signatures have one great advantage over normal signatures; because the
 
 We detach sign data using the following command, which will produce a small file called `mySoftware.dmg.sig`:
 
-```
+```bash
 gpg --detach-sign mySoftware.dmg
 ```
 
 Now let us assume we have downloaded a piece of software and its associated signature (`python.dmg` and `python.dmg.sig`). Provided the files are in the same directory and have the same name, we can verify the signature
 
-```
+```bash
 # list files
 $ ls
 software.dmg
