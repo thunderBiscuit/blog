@@ -18,22 +18,21 @@ GPG is a small piece of software that allows you to manage keys for cryptographi
 
 <em>This section is the same as the Priors section from [Part 1](). If you have already set up gpg and created a key, you can safely move on to the section on encrypting messages.</em>
 
-First, make sure you have gpg installed on your computer. You can get it using homebrew (`brew install gpg`) on MacOS or any of the package managers on Linux (`apt-get gpg` on Ubuntu for example).
+First, make sure you have gpg installed on your computer. You can get it using homebrew (`brew install gpg`) on MacOS or using any of the package managers on Linux (`apt-get gpg` on Ubuntu for example).
 
 ```shell
-# ensure gpg is installed on your computer
-gpg --version
+gpg --version  # ensure gpg is installed on your computer
 ```
 
 The first thing we'll do is create a key. I recommend creating an initial test key with a simple password to use for the rest of this tutorial, and deleting it afterwards.
 
-```
-gpg --full-generate-key   # generate a new key
+```shell
+gpg --full-generate-key  # generate a new key
 ```
 
 The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in gpg. To see what keys pairs are in your keyring, simply enter
 
-```
+```shell
 $ gpg --list-keys
 
 pub   rsa1024 2019-09-12 [SC]
@@ -46,7 +45,7 @@ We now have a key pair available to us for the tasks below. The `--list-key` com
 
 One last thing we should mention is that the public key is often shared with others for reasons we'll see further on; you can share your key in binary format, or, often more conveniently, in a text format called ASCII-armor.
 
-```
+```shell
 # generate public key file in binary format
 $ gpg --export MrAnderson > myBinaryPubKey.gpg
 
@@ -97,6 +96,6 @@ Always make sure that the public key you use to encrypt is genuine! Call the per
 
 Upon getting the encrypted file, your friend Morpheus could decrypt its content using
 
-```
+```shell
 gpg --decrypt message.txt.asc > decryptedMessage.txt
 ```
