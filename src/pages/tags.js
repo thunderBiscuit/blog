@@ -42,8 +42,6 @@ class tagsPage extends React.Component {
     return (
       <Layout>
         <Title>Tags</Title>
-        <TagButton onClick={this.handleClick} name={"hello"} id={"hello"} />
-        <TagButton onClick={this.handleClick} name={"world"} id={"world"} />
         <TagButton onClick={this.handleClick} name={"gpg"} id={"gpg"} />
         <div style={{ marginTop: "3rem" }}>
           <h4 id="numberOfPosts">0 Posts</h4>
