@@ -5,7 +5,6 @@ function TagsList({ children }) {
   return (
     <div style={{ display: "flex", justifyContent: "flex-end" }}>
       {children.tags.map(tag => {
-        // console.log("I am", tag)
         return (
           <span className="tag is-primary" style={{ marginRight: "0.5rem" }}>
             {tag}
