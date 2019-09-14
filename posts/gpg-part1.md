@@ -20,20 +20,19 @@ PGP does much more, but this post is really about those 2 basic tasks.
 
 First, make sure you have gpg installed on your computer. You can get it using homebrew (`brew install gpg`) on MacOS or any of the package managers on Linux (`apt-get gpg` on Ubuntu for example).
 
-```bash
-# ensure gpg is installed on your computer
-gpg --version
+```shell
+gpg --version  # ensure gpg is installed on your computer
 ```
 
 The first thing we'll do is create a key. I recommend creating an initial test key with a simple password to use for the rest of this tutorial, and deleting it afterwards.
 
-```bash
-gpg --full-generate-key   # generate a new key
+```shell
+gpg --full-generate-key  # generate a new key
 ```
 
 The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in gpg. To see what keys pairs are in your keyring, simply enter
 
-```bash
+```shell
 $ gpg --list-keys
 
 pub   rsa1024 2019-09-12 [SC]
