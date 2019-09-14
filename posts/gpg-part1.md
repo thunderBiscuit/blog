@@ -5,22 +5,22 @@ year: "2019"
 tags: ["gpg"]
 ---
 
-> This post is the first in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 2](/gpg-part2) for the lowdown on how to encrypt and decrypt messages using GPG.
-
 The goal of this post is to get you up to speed on 2 of the main uses of GPG: cryptographically signing and verifying signatures on data.
 
-GPG is a small open source piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they simply are numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
+> Note: this post is the first in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 2](/gpg-part2) for the lowdown on how to encrypt and decrypt messages using GPG.
+
+GPG is a small open source piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they are simply numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
 
 1. Signing a piece of data in a way that only a person in knowledge of a specific key could have done. The validity of that signature is then easily verifiable by any other party.
 2. Verify the validity of a signature from someone else on a specific piece of data.
 
 GPG does much more, but this post is really about those 2 basic tasks.
 
-> These two posts are aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. But you should not stop here on your journey to learning about GPG; for information on who invented this whole thing in the first place, go [here](); to understand the difference between GPG and PGP, check out [this article](); to extend your working knowledge further I recommend reading the GPG docs [here]().
+> You should not stop here on your journey to learning about GPG; for information on who invented this whole thing in the first place, go [here](); to understand the difference between GPG and PGP, check out [this article](); to extend your working knowledge further I recommend reading the GPG docs [here]().
 
 ## Priors
 
-First, make sure you have gpg installed on your computer. You can get it using homebrew (`brew install gpg`) on MacOS or any of the package managers on Linux (`apt-get gpg` on Ubuntu for example).
+First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), or on Linux using any of the package managers (`apt-get gpg` on Ubuntu for example).
 
 ```shell
 gpg --version  # ensure gpg is installed on your computer
@@ -32,11 +32,10 @@ The first thing we'll do is create a key. I recommend creating an initial test k
 gpg --full-generate-key  # generate a new key
 ```
 
-The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in gpg. To see what keys pairs are in your keyring, simply enter
+The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in GPG. To see what keys pairs are in your keyring, enter
 
 ```shell
 $ gpg --list-keys
-
 pub   rsa1024 2019-09-12 [SC]
       464E76FA16CB80C449C45F789781764F696BA7E2
 uid           [ultimate] MrAnderson (I am a comment) <myemail@email.com>
