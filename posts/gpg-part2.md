@@ -5,14 +5,18 @@ year: "2019"
 tags: ["gpg"]
 ---
 
-> This post is the second in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 1](/gpg-part1) to learn about signing and verifying signatures.
+The goal of this post is to get you up to speed on 2 of the main uses of GPG: cryptographically encrypting and decrypting data.
 
-GPG is a small piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they simply are numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in PGP is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
+> Note: this post is the second in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 1](/gpg-part1) to learn about signing and verifying signatures.
+
+GPG is a small open source piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they are simply numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
 
 1. Encrypt a message in a way that only a person with the knowledge of a specific key could decrypt.
 2. Decrypt a message that was encrypted for a private key you own.
 
-> These posts are aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. But you should not stop here on your journey to learning about PGP; for information on who invented this whole thing in the first place, go [here](); to extend your working knowledge further I recommend reading the docs of PGP [here]().
+GPG does much more, but this post is really about those 2 basic tasks.
+
+> You should not stop here on your journey to learning about GPG; for information on who invented this whole thing in the first place, go [here](); to understand the difference between GPG and PGP, check out [this article](); to extend your working knowledge further I recommend reading the GPG docs [here]().
 
 ## Priors
 

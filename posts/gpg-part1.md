@@ -7,7 +7,7 @@ tags: ["gpg"]
 
 The goal of this post is to get you up to speed on 2 of the main uses of GPG: cryptographically signing and verifying signatures on data.
 
-> Note: this post is the first in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 2](/gpg-part2) for the lowdown on how to encrypt and decrypt messages using GPG.
+> Note: this post is the first in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 2](/gpg-part2) for the lowdown on how to encrypt and decrypt messages.
 
 GPG is a small open source piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they are simply numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
 
