@@ -5,7 +5,7 @@ year: "2019"
 tags: ["gpg"]
 ---
 
-> This post is the second in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 1]() to learn about signing and verifying signatures.
+> This post is the second in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 1](/gpg-part1) to learn about signing and verifying signatures.
 
 GPG is a small piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they simply are numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in PGP is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
 

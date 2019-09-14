@@ -5,16 +5,18 @@ year: "2019"
 tags: ["gpg"]
 ---
 
-The goal of this post is to get you up to speed on 2 of the main uses of pgp: cryptographically signing and verifying signatures on data. Check out [part 2](./posts/gpg-part1) for the lowdown on how to encrypt and decrypt messages using gpg.
+> This post is the first in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 2](/gpg-part2) for the lowdown on how to encrypt and decrypt messages using GPG.
 
-GPG is a small piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they simply are numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in PGP is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
+The goal of this post is to get you up to speed on 2 of the main uses of GPG: cryptographically signing and verifying signatures on data.
 
-1. Signing a piece of data in a way that only a person in knowledge of a specific number (the private key) could have done. The validity of that signature is then easily verifiable by other parties.
-2. Verify the validity of signature from someone else on a specific piece of data.
+GPG is a small open source piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they simply are numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
 
-PGP does much more, but this post is really about those 2 basic tasks.
+1. Signing a piece of data in a way that only a person in knowledge of a specific key could have done. The validity of that signature is then easily verifiable by any other party.
+2. Verify the validity of a signature from someone else on a specific piece of data.
 
-> These posts are aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. But you should not stop here on your journey to learning about PGP; for information on who invented this whole thing in the first place, go [here](); to extend your working knowledge further I recommend reading the docs of PGP [here]().
+GPG does much more, but this post is really about those 2 basic tasks.
+
+> These two posts are aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. But you should not stop here on your journey to learning about GPG; for information on who invented this whole thing in the first place, go [here](); to understand the difference between GPG and PGP, check out [this article](); to extend your working knowledge further I recommend reading the GPG docs [here]().
 
 ## Priors
 
