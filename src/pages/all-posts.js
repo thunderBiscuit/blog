@@ -10,27 +10,14 @@ export default ({ data }) => (
     <Title>All posts</Title>
 
     <div style={{ marginTop: "4rem" }}>
-      <h3 style={{ marginBottom: "2rem" }}>
+      <h5 style={{ marginBottom: "2rem" }}>
         2019
         <span style={{ color: "#bdbdbd" }}>
           {" "}
-          — {data.nineteen.totalCount} Post
+          — {data.nineteen.totalCount} Posts
         </span>
-      </h3>
+      </h5>
       {data.nineteen.edges.map(({ node }) => (
-        <PostLink node={node} />
-      ))}
-    </div>
-
-    <div style={{ marginTop: "4rem" }}>
-      <h3 style={{ marginBottom: "2rem" }}>
-        2018
-        <span style={{ color: "#bdbdbd" }}>
-          {" "}
-          — {data.eighteen.totalCount} Posts
-        </span>
-      </h3>
-      {data.eighteen.edges.map(({ node }) => (
         <PostLink node={node} />
       ))}
     </div>
