@@ -23,10 +23,11 @@ GPG does much more, but this post is really about those 2 basic tasks.
 First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), or on Linux using any of the package managers (`apt-get gpg` on Ubuntu for example).
 
 ```shell
-gpg --version  # ensure gpg is installed on your computer
+# if this returns a version number, you're good!
+gpg --version
 ```
 
-The first thing we'll do is create a key. I recommend creating an initial test key with a simple password to use for the rest of this tutorial, and deleting it afterwards.
+The first thing we'll do is create a key. I recommend creating an test key with a simple password to use for the rest of this tutorial, and deleting it afterwards.
 
 ```shell
 gpg --full-generate-key  # generate a new key
@@ -36,88 +37,73 @@ The process of creating a new key requires we answer some question about key typ
 
 ```shell
 $ gpg --list-keys
-pub   rsa1024 2019-09-12 [SC]
-      464E76FA16CB80C449C45F789781764F696BA7E2
-uid           [ultimate] MrAnderson (I am a comment) <myemail@email.com>
-sub   rsa1024 2019-09-12 [E]
+pub   rsa1024 2019-09-14 [SC]
+      0E94A26389C61705D08560DFE8C2F3D9893479A7
+uid           [ultimate] MrAnderson <MrAnderson@email.com>
+sub   rsa1024 2019-09-14 [E]
 ```
 
-We now have a key pair available to us for the tasks below. The `--list-key` command outputs some meta information about the key, as well as a fingerprint (the `464E76FA16CB80C449C45F789781764F696BA7E2` part). (what is the fingerprint? What is the difference between that and the public key?)
+We now have a key pair available to us for the tasks below. The `--list-key` command outputs some meta information about the key, as well as a fingerprint (the `0E94A26389C61705D08560DFE8C2F3D9893479A7` part). (what is the fingerprint? What is the difference between that and the public key?)
 
-One last thing we should mention is that the public key is often shared with others for reasons we'll see further on; you can share your key in binary format, or, often more conveniently, in a text format called ASCII-armor.
+One last thing we should mention is that the public key is often shared with others for reasons we'll see further on; you can share your key in binary format, or, often more conveniently, in a text format called ASCII-armor. You can print your public key to the console using `gpg --export --armor MrAnderson`, or generate a file with your key in it using the following commands:
 
 ```bash
 # generate public key file in binary format
 $ gpg --export MrAnderson > myBinaryPubKey.gpg
 
 # generate public key file in ASCII-armor format
-$ gpg --export --armor <key identifier> > userpubkey.asc
+$ gpg --export --armor MrAnderson > MrAndersonPubKey.asc
 
 # print key in ASCII-armor format to console
 $ cat MrAndersonPubKey.asc
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
-mI0EXXqVSgEEAKSFqG8a3Mp/nnZEQYwjJ939hXKe67DstJaoT2I2RjbHSPGzNq65
-VJB6RYDiqkWtIxu2UxFklc5DXMH2W91v0OyItDXj7Duc3Lt+xQcGbIVpskR36H9w
-dZZTD6wN85z8AwWElAqr9hVzkO+NCdaI+Kkhoxn82d3TSIpmoNpJ7+WFABEBAAG0
-MnRvdGFsbHlSZWFsTmFtZSAoSSBhbSBhIGNvbW1lbnQpIDx0b3RhbEBnbWFpbC5j
-b20+iM4EEwEIADgWIQRGTnb6FsuAxEnEX3iXgXZPaWun4gUCXXqVSgIbAwULCQgH
-AgYVCgkICwIEFgIDAQIeAQIXgAAKCRCXgXZPaWun4s/lA/9LvWY4CDHKV0hh2ulH
-l6dM6cpsscKj5rIyQceUwZLUYrRuQQzxLVBdUiEEwo+yMSenWENh/CpHKxrQJcs9
-5ubqfFp4zzroYWe4VE2Cljlsapofkl3902iuhriusLaUMC0SIVlRehpvqjiPCGdA
-ZW5oJXLgz8UeeiYxPrAS9UZI3LiNBF16lUoBBACtkqQxCWoTFBsVCH0ESHVUr1/7
-fMi+HX/jnPscjsRa4PdukpZrhFA2VgMH5SkvIjoUSY8GDT1cGHH4aquaF9VFwNJY
-Os8eCYwqqOOYy1lo4nALMjudsH30tIdKVaEJ0N8KMT6cN/MwFy8e2YM8pd306wLS
-ueh+MUOyK7BAgM4gGQARAQABiLYEGAEIACAWIQRGTnb6FsuAxEnEX3iXgXZPaWun
-4gUCXXqVSgIbDAAKCRCXgXZPaWun4vxBA/4+VximORFa0ND9ZYslyJ/ts9lFYwNT
-0GvCjaWKYFb+3o0AU+s+VMTX3noq+dPYgXGL9eADdz7uvDjDMbT0rilE18WyN/ic
-ves+AZPBwnoWnWiJ1pNmfNb1TRlDBXq3CkJmMuJkjgi99NLtDXt9X2b1HvsPUmAM
-TfCUQJgt5l+59A==
-=J8Z3
+mI0EXX0oXQEEAK/NyXBQxd1s9s3SYSVXMXfW0a3XR6JGwzf3ocfCu8OP12hVMvfo
+BQfdj2WllNsWWpzNRJdeK2QCtLudykPNKtY7BuAk5bIWbGuVsNkWU/UmJZqijE0Q
+aA+g2K1DFST5h4N12vLyLnN0On7RaJsTizR083E2QATsU/3VjP3Y3LUnABEBAAG0
+IU1yQW5kZXJzb24gPE1yQW5kZXJzb25AZW1haWwuY29tPojOBBMBCAA4FiEEDpSi
+Y4nGYN/owvMXBdCF2Yk0eacFAl19KF0CGwMFCwkIBwIGFQoJCAsCBBYCAwECHgEC
+F4AACgkQBdCF2Yk0eadEqgQAm/LeK4BK77OPhy2jiouhmyhM922sATp07uP0s+WY
+lJZZOlLSELc7FMn+iSzgsoBic432UFZVfJ5FZukn9oSSrvJagw7nx4Y3rIyUNDc+
+0Dcw2lKH8WDqXXoANgWSewPb6P+kBq+ihVanaWgsG9a1nvb4/BoubMMoccAj3EaH
+0Yq4jQRdfShdAQQArXj8/Ch3y//xeSPDXXu/HlylYT56s9gTOs8PzW/yeR8XAzGG
++YThFvMsRdfr8VYwr8fsNT+fS12IadaiwOX6ejs63LnE9WnyfnYdVTQO5ZTh61eU
+zB1q97/YevWXIwTYAP/0h+tASqirffamdLZHctx54iozfb/M3QuSU2c4i5fAEQEA
+AYi2BBgBCAAgFiEEDpSiY4nGYN/owvMXBdCF2Yk0eacFAl19KF0CGwwACgkQBdCF
+2Yk0eacnRgP7BKkW5dMJn8aHKxSGmhcpeGnfI1Rp4MorfjcwCz/gqgtoiqOY99SK
+maij8J92E5sKpdMpZXhQfjZjVDb91oAW0TdUEXbVVBSjZ4Ku33QwFCm+Qzud/xaT
+lQDrnYx05SITsBAAmOrwfBRo464WfU/0rlXziE2E4wDY4U6IYtbrAcQ=
+=aNWV
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-To make the rest of this post a breeze, we'll also pretend we've created a public key called `MrAndersonPubKey.asc` and that we've recieved a firend's public key which we've saved under `morpheusPubKey.asc`.
+To make the rest of this post a breeze, we'll pretend we've created a public key called `MrAndersonPubKey.asc` and that we've recieved a friend's public key which is saved under `morpheusPubKey.asc`.
 
 ## Task 1: Sign a document (without encrypting it)
 
-Signing a document (or any piece of data) creates proof that the document was signed by the owner of a specific public key, and that the document was not tempered with. Note that the signature is completely agnostic to the data it is signing. We can use gpg to sign sound data, text data, images, etc.
+Signing a document (or any piece of data) creates proof that the document was signed by the owner of a specific public key, and that the document was not tempered with. Note that the signature is completely agnostic to the data it is signing. We can use GPG to sign sound data, text data, image data, etc.
 
 The goal here is really to sign an _open_ document. There is no encryption of the document in this procedure. As such, the document is usable by anyone whether or not they can verify its signature.
 
-One of the common objectives of signatures is to attest that a specific version of the data is being stored or sent across a network. Once a piece of data has been signed, the change of a single bit in the data will render the signature invalid. This is why, for example, the lead maintainer of bitcoin core will sign the downloadable releases of the software. Once fully downloaded, you can test whether his signature is valid on the download you just performed; if the signature is valid, you are in posession of the exact same piece of code that he signed. This is useful because you can use it as an assurance that the software you just downloaded was not tampered with in the process of downloading.
+One of the common objectives of signatures is to attest that a specific version of the data is being stored or sent across a network. Once a piece of data has been signed, changing a single bit in the data will render the signature invalid. This is why, for example, the lead maintainer of the bitcoin core software will sign the downloadable releases of the software. Once downloaded, you can test for yourself whether his signature is valid on the download you just performed; if the signature is valid, you are in posession of the exact same piece of code that he signed. If the signature is invalid, the download was tampered with on its way to you. This is useful because you can use it as an assurance that the software you download is wholesome, without having to trust the network you download it on.
 
-Let us suppose you have a file called `message.txt` you wish to sign.
+Let us suppose you have a file called `message.txt` in your current directory with the content `hello, world` you wish to sign.
 
-```bash
+```shell
 gpg --sign message.txt
 ```
 
-outputs a new file in the same working directory called `message.txt.gpg` that contains the signature _and_ the original message. The message is not encrypted. Anyone can retrieve the message from this file, whether they verify the signature or not.
+outputs a new file in the same directory called `message.txt.gpg` that contains the signature _and_ the original message. The message is not encrypted. Anyone can retrieve the message from the file, whether they verify the signature or not.
 
-You can see the contents of the file using
+Notice that the signed file in `.gpg` format, a binary format. This can make it inconvenient to look at or share (try `cat message.txt.gpg` to see what I mean). Another very common way to save the file is in ASCII-armor format using the `--armor` command like so:
 
-```bash
-gpg -decrypt message.txt.gpg
-```
-
-which will print it to the console. You can also output the original data (the message in this case) to a file using
-
-```bash
-gpg --decrypt message.txt.gpg > message_signed.txt
-```
-
-This will print the verification of the signature to the console as the file is created, but the signature verification will not be included in the file. The file is now the recreated original file.
-
-Notice that the file output by `gpg --sign message.txt` is in `.gpg` format, a binary format, and so it can be inconvenient to share. Another way to save the file is in ASCII-armor format using the `--armor` command like so:
-
-```bash
+```shell
 gpg --sign --armor message.txt
 ```
 
 The output file will be `message.txt.asc`, and will look something like this:
 
-```bash
+```shell
 -----BEGIN PGP MESSAGE-----
 
 owGbwMvMwME4vbHMPzN7+SPGNbJJ3LmpxcWJ6al6JRUlsVVLizNSc3LydRTK84ty
@@ -131,22 +117,50 @@ eQA=
 
 ```
 
-You can then copy and paste this anywhere to share or store the signed message, including email, or text.
+You can then copy and paste this anywhere to share or store the signed message. For example you could send it as a text, or include it in an email.
+
+To verify the validity of our signature on data, other users will need to have our public key information. We can export it to a file using the following command, and then simply share the file with anyone we wish.
+
+```
+gpg --export --armor MrAnderson > MrAndersonPubKey.asc
+```
 
 ## Task 2: Verify the signature of a document
 
-You can read a signed document without the public key of the signator, but you will not be able to validate its signature.
+Let us assume someone has sent you a signed document (`message_from_Morpheus.txt.asc`) and you wish to verify its signature. You can use the `--verify` option to do so.
 
 ```bash
-gpg --verify message.txt.asc
-# will return an error stating that you do not posess the public
-# key required to validate the signed document
+$ gpg --verify message_from_Morpheus.txt.asc
+gpg: Signature made Sat 14 Sep 18:55:38 2019 EDT
+gpg:                using RSA key 5F35BF8A88567B756A5F06898DFB48E3D8717A99
+gpg:                issuer "morpheus@email.com"
+gpg: Can't check signature: No public key
 ```
 
-To validate the signature, import the public key of the signator on your gpg keyring (in this case let's assume it's a friend who just sent you their public key in ASCII-armor format):
+Notice that if you simply have the file but not the public key of the signator in your keyring, the `--verify` command will state that the signature could not be verified as valid.
+
+To validate the signature, you'll first have to import the public key of the signator on your GPG keyring (in this case let's assume your friend Morpheus just sent you his public key in ASCII-armor format—he knows how to export his key because he read Task 1 of this post), and the file is saved under `MorpheusPubKey.asc`. You can import his key in your keyring using
 
 ```bash
-gpg --import morpheusPubKey.asc
+$ gpg --import morpheusPubKey.asc
+gpg: key 06898DFB48E3D899: public key "Morpheus <morpheus@email.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+```
+
+Now if you list your keys, you'll find you have 2 keys in your keyring:
+
+```
+$ gpg --list-keys
+pub   rsa1024 2019-09-14 [SC]
+      0E94A26389C660DFE8C2F31705D085D9893479A7
+uid           [ultimate] MrAnderson <MrAnderson@email.com>
+sub   rsa1024 2019-09-14 [E]
+
+pub   rsa1024 2019-09-14 [SC]
+      5F357B756A571BF8A88567AF06898DFB48E3D899
+uid           [ unknown] Morpheus <morpheus@email.com>
+sub   rsa1024 2019-09-14 [E]
 ```
 
 When first importing a key, it won't be "certified" by default (gpg does not assume you _really_ know that the key is the key from the person who it says it belongs to). They key could have for example been tampered with on its way to you.
@@ -154,48 +168,59 @@ When first importing a key, it won't be "certified" by default (gpg does not ass
 If you really are certain (it is recommended that you check using multiple sources, or that you take the time to call and text the person to verify that the fingerprint is indeed the right one), you can sign that key yourself with your own private key, adding a layer of protection to the validity of your friend's public key in your key ring.
 
 ```shell
-gpg -sign-key morpheusPubKey.asc
+gpg -sign-key Morpheus
 ```
 
-Once you have the public key of the signator of the piece of data you wish to verify, you can do so in one line of code:
+This will identify the key as `[full]` instead of `[unknown]` in your keyring. Notice that you do not need to sign a public key to use it in signature verification.
+
+Once you have the public key of the signator of the piece of data you wish to verify in your keyring, you can do so in one line of code. GPG will print the result of the signature verification on the console. In the case of a valid signature, it would look like this:
 
 ```bash
-gpg --verify message.txt.asc
+gpg --verify message_from_Morpheus.txt.asc
+gpg: Signature made Sat 14 Sep 18:55:38 2019 EDT
+gpg:                using RSA key 5F357AF0687B756A571BF8A885698DFB48E3D899
+gpg:                issuer "morpheus@email.com"
+gpg: Good signature from "Morpheus <morpheus@email.com>" [full]
 ```
 
-GPG will print the result of the signature verification on the console. In the case of a valid signature, it would look like this:
-
-```bash
-gpg: Signature made Thu 12 Sep 16:07:15 2019 EDT
-gpg:                using RSA key 0294857274CB80C449C45F789781764F696BA7E2
-gpg:                issuer "email@email.com"
-gpg: Good signature from "MrAnderson (I am a comment) <email@email.com>" [ultimate]
-```
-
-To see the content of the message, you'll want to either print it to the console or create a new file with the original message in it. Note that all the following commands will also print the result of the signature verification to the console.
+To see the content of the message, you'll want to either print it to the console or create a new file with the original message in it.
 
 ```shell
-# print to console, from binary format
-gpg --decrypt message.txt.gpg
-
-# print to console, from ASCII-armor format
-gpg --decrypt message.txt.asc
-
-# build into a file, from ASCII-armor format
-gpg --decrypt message.txt.asc > message.txt
+$ gpg --decrypt message.txt.asc
+what's up dog?
+gpg: Signature made Sat 14 Sep 18:55:38 2019 EDT
+gpg:                using RSA key 5F357AF0687B756A571BF8A885698DFB48E3D899
+gpg:                issuer "morpheus@email.com"
+gpg: Good signature from "Morpheus <morpheus@email.com>" [full]
 ```
+
+which will print it to the console, as well as print the result of the signature verifcation. You could have used `--decrypt` on a message without the public key in your keyring and GPG would still have printed the message, but told you that it could not verify the signature the same way as it did above with the `--verify` command.
+
+Anyone in posession of the file can also output the original data to a file using
+
+```shell
+$ gpg --decrypt message_from_Morpheus.txt.asc > Morpheus_message_only.txt
+gpg: Signature made Sat 14 Sep 18:55:38 2019 EDT
+gpg:                using RSA key 5F357AF0687B756A571BF8A885698DFB48E3D899
+gpg:                issuer "morpheus@email.com"
+gpg: Good signature from "Morpheus <morpheus@email.com>" [full]
+
+# the cat command prints to console the contents of a file
+$ cat Morpheus_message_only.txt
+what's up dog?
+```
+
+This will print the verification of the signature to the console as the file is created, but the signature verification will not be included in the newly created file; the new file is now an exact replica of the original file.
 
 ## Extras
 
 ### Clearsign
 
-Note that the signature file build in ASCII-armor format does not contain a human readable version of the original data (in this case the string `hello, world`). The file is not encrypted, but you'll need another command to show its content.
+Note that the signature file build in ASCII-armor format in _Task 1_ does not contain a human readable version of the original data (in this case the string `hello, world`). The file is not encrypted, but you'll need another command to show its content.
 
 ```bash
 # create a signature file named message.txt.asc
 $ gpg --sign --armor message.txt
-
-# the cat command prints to console the contents of a file
 $ cat message.txt.asc
 
 -----BEGIN PGP MESSAGE-----
@@ -210,7 +235,7 @@ nwMA
 -----END PGP MESSAGE-----
 ```
 
-Using the `--clearsign` command rather than the `--sign` one on ASCII-armor format to sign a document will include the original data in the signed file. Notice how the resulting file keeps the signed message at the top, making it easy to parse, whether we verify the signature or not.
+Using the `--clearsign` command rather than the `--sign` one on ASCII-armor format to sign a document will include the original data in the signed file. The resulting file keeps the signed message at the top, making it easy to parse, whether we verify the signature or not.
 
 ```bash
 $ gpg --clearsign --armor message.txt
@@ -235,26 +260,28 @@ LqCZpsWEDkzihjVwKSRz1UNIm1Egg4jyEV2ZY32dJnveN6wCiB1ABMe1zvB3G2cI
 
 A popular way to sign software is through the use of _detached signatures_. A detached signature is a small file that sits _external_ to the actual softare or piece of data being signed.
 
-Detached signatures have one great advantage over normal signatures; because they are separate, they are not mandatory in order to use the data. The signatures for popular software like Python, for example, are downloaded separately and, therefore do not interfere with one's ability to simply download and start using. On the other hand, verifying the validity of such signatures is just as easy as with regular signatures.
+Detached signatures have one great advantage over normal signatures; because they are separate, they are not mandatory in order to use the data. The signatures for popular software (say, Python, for example), are downloaded separately, and therefore do not interfere with one's ability to simply download and start using. On the other hand, verifying the validity of such signatures is just as easy as with regular signatures.
 
 We detach sign data using the following command, which will produce a small file called `mySoftware.dmg.sig`:
 
-```bash
-gpg --detach-sign mySoftware.dmg
+```shell
+$ gpg --detach-sign mySoftware.dmg
+$ ls
+mySoftware.dmg
+mySoftware.dmg.sig
 ```
 
-Now let us assume we have downloaded a piece of software and its associated signature (`python.dmg` and `python.dmg.sig`). Provided the files are in the same directory and have the same name, we can verify the signature
+Now let us assume we have downloaded a piece of software and its associated signature (`python.dmg` and `python.dmg.sig`). Provided the files are in the same directory and have the same name, we can verify the signature like so:
 
-```bash
-# list files
+```shell
 $ ls
-software.dmg
-software.dmg.sig
+python.dmg
+python.dmg.sig
 
 $ gpg --verify software.dmg.sig
-gpg: assuming signed data in 'message.txt'
-gpg: Signature made Thu 12 Sep 22:20:43 2019 EDT
-gpg:                using RSA key 464E76FA16CB80C449C45F789781764F696BA7E2
-gpg:                issuer "total@gmail.com"
-gpg: Good signature from "totallyRealName (I am a comment) <total@gmail.com>" [ultimate]
+gpg: assuming signed data in 'python.dmg'
+gpg: Signature made Sat 14 Sep 19:28:09 2019 EDT
+gpg:                using RSA key 0E49C5D08660D9A2638FE8C2F31705D9893479A7
+gpg:                issuer "mranderson@email.com"
+gpg: Good signature from "MrAnderson <MrAnderson@email.com>" [ultimate]
 ```
