@@ -20,86 +20,113 @@ GPG does much more, but this post is really about those 2 basic tasks.
 
 ## Priors
 
-<em>This section is the same as the Priors section from [Part 1](). If you have already set up gpg and created a key, you can safely move on to the section on encrypting messages.</em>
+<em>This section is the same as the Priors section from [Part 1](/gpg-part1). If you have already set up gpg, created a key, exported it, and imported other people's keys, you can safely move on to the Task 3 on encrypting messages.</em>
 
-First, make sure you have gpg installed on your computer. You can get it using homebrew (`brew install gpg`) on MacOS or using any of the package managers on Linux (`apt-get gpg` on Ubuntu for example).
+#### Installing the Software
 
-```shell
-gpg --version  # ensure gpg is installed on your computer
-```
-
-The first thing we'll do is create a key. I recommend creating an initial test key with a simple password to use for the rest of this tutorial, and deleting it afterwards.
+First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), or on Linux using any of the package managers (`apt-get gpg` on Ubuntu for example).
 
 ```shell
-gpg --full-generate-key  # generate a new key
+# if this returns a version number, you're good!
+$ gpg --version
 ```
 
-The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in gpg. To see what keys pairs are in your keyring, simply enter
+#### Create Keys
+
+The first thing we'll do is create a key. I recommend creating an test key with a simple password to use for the rest of this tutorial, and deleting it afterwards.
+
+```shell
+$ gpg --full-generate-key  # generate a new key
+```
+
+The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in GPG. To see what keys pairs are in your keyring, enter
 
 ```shell
 $ gpg --list-keys
-
-pub   rsa1024 2019-09-12 [SC]
-      464E76FA16CB80C449C45F789781764F696BA7E2
-uid           [ultimate] MrAnderson (I am a comment) <myemail@email.com>
-sub   rsa1024 2019-09-12 [E]
+pub   rsa1024 2019-09-14 [SC]
+      0E94A26389C61705D08560DFE8C2F3D9893479A7
+uid           [ultimate] MrAnderson <MrAnderson@email.com>
+sub   rsa1024 2019-09-14 [E]
 ```
 
-We now have a key pair available to us for the tasks below. The `--list-key` command outputs some meta information about the key, as well as a fingerprint (the `464E76FA16CB80C449C45F789781764F696BA7E2` part). (what is the fingerprint? What is the difference between that and the public key?)
+We now have a key pair available to us for the tasks below. The `--list-key` command outputs some meta information about the key, as well as a fingerprint (the `0E94A26389C61705D08560DFE8C2F3D9893479A7` part). (what is the fingerprint? What is the difference between that and the public key?)
 
-One last thing we should mention is that the public key is often shared with others for reasons we'll see further on; you can share your key in binary format, or, often more conveniently, in a text format called ASCII-armor.
+#### Exporting and Importing Keys
+
+To verify the validity of your signature on data or encrypt messages destined for you, other users will need to have your public key information. We can export our public key to a file using the following command, and then simply share the file with anyone we wish.
+
+```
+gpg --export --armor MrAnderson > MrAndersonPubKey.asc
+```
+
+#### ASCII-armor Format
+
+One last thing we should mention is that you can share your keys in binary format, or, often more conveniently, in a text format called ASCII-armor. You can print your public key to the console using the name or the email associated with the key as the last argument as in `gpg --export --armor MrAnderson`, or generate a file with your key in it using the following commands:
 
 ```shell
 # generate public key file in binary format
 $ gpg --export MrAnderson > myBinaryPubKey.gpg
 
 # generate public key file in ASCII-armor format
-$ gpg --export --armor <key identifier> > userpubkey.asc
+$ gpg --export --armor MrAnderson > MrAndersonPubKey.asc
 
-# print key in ASCII-armor format to console
+# print content of key file in ASCII-armor format to console
 $ cat MrAndersonPubKey.asc
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
-mI0EXXqVSgEEAKSFqG8a3Mp/nnZEQYwjJ939hXKe67DstJaoT2I2RjbHSPGzNq65
-VJB6RYDiqkWtIxu2UxFklc5DXMH2W91v0OyItDXj7Duc3Lt+xQcGbIVpskR36H9w
-dZZTD6wN85z8AwWElAqr9hVzkO+NCdaI+Kkhoxn82d3TSIpmoNpJ7+WFABEBAAG0
-MnRvdGFsbHlSZWFsTmFtZSAoSSBhbSBhIGNvbW1lbnQpIDx0b3RhbEBnbWFpbC5j
-b20+iM4EEwEIADgWIQRGTnb6FsuAxEnEX3iXgXZPaWun4gUCXXqVSgIbAwULCQgH
-AgYVCgkICwIEFgIDAQIeAQIXgAAKCRCXgXZPaWun4s/lA/9LvWY4CDHKV0hh2ulH
-l6dM6cpsscKj5rIyQceUwZLUYrRuQQzxLVBdUiEEwo+yMSenWENh/CpHKxrQJcs9
-5ubqfFp4zzroYWe4VE2Cljlsapofkl3902iuhriusLaUMC0SIVlRehpvqjiPCGdA
-ZW5oJXLgz8UeeiYxPrAS9UZI3LiNBF16lUoBBACtkqQxCWoTFBsVCH0ESHVUr1/7
-fMi+HX/jnPscjsRa4PdukpZrhFA2VgMH5SkvIjoUSY8GDT1cGHH4aquaF9VFwNJY
-Os8eCYwqqOOYy1lo4nALMjudsH30tIdKVaEJ0N8KMT6cN/MwFy8e2YM8pd306wLS
-ueh+MUOyK7BAgM4gGQARAQABiLYEGAEIACAWIQRGTnb6FsuAxEnEX3iXgXZPaWun
-4gUCXXqVSgIbDAAKCRCXgXZPaWun4vxBA/4+VximORFa0ND9ZYslyJ/ts9lFYwNT
-0GvCjaWKYFb+3o0AU+s+VMTX3noq+dPYgXGL9eADdz7uvDjDMbT0rilE18WyN/ic
-ves+AZPBwnoWnWiJ1pNmfNb1TRlDBXq3CkJmMuJkjgi99NLtDXt9X2b1HvsPUmAM
-TfCUQJgt5l+59A==
-=J8Z3
+mI0EXX0oXQEEAK/NyXBQxd1s9s3SYSVXMXfW0a3XR6JGwzf3ocfCu8OP12hVMvfo
+BQfdj2WllNsWWpzNRJdeK2QCtLudykPNKtY7BuAk5bIWbGuVsNkWU/UmJZqijE0Q
+aA+g2K1DFST5h4N12vLyLnN0On7RaJsTizR083E2QATsU/3VjP3Y3LUnABEBAAG0
+IU1yQW5kZXJzb24gPE1yQW5kZXJzb25AZW1haWwuY29tPojOBBMBCAA4FiEEDpSi
+Y4nGYN/owvMXBdCF2Yk0eacFAl19KF0CGwMFCwkIBwIGFQoJCAsCBBYCAwECHgEC
+F4AACgkQBdCF2Yk0eadEqgQAm/LeK4BK77OPhy2jiouhmyhM922sATp07uP0s+WY
+lJZZOlLSELc7FMn+iSzgsoBic432UFZVfJ5FZukn9oSSrvJagw7nx4Y3rIyUNDc+
+0Dcw2lKH8WDqXXoANgWSewPb6P+kBq+ihVanaWgsG9a1nvb4/BoubMMoccAj3EaH
+0Yq4jQRdfShdAQQArXj8/Ch3y//xeSPDXXu/HlylYT56s9gTOs8PzW/yeR8XAzGG
++YThFvMsRdfr8VYwr8fsNT+fS12IadaiwOX6ejs63LnE9WnyfnYdVTQO5ZTh61eU
+zB1q97/YevWXIwTYAP/0h+tASqirffamdLZHctx54iozfb/M3QuSU2c4i5fAEQEA
+AYi2BBgBCAAgFiEEDpSiY4nGYN/owvMXBdCF2Yk0eacFAl19KF0CGwwACgkQBdCF
+2Yk0eacnRgP7BKkW5dMJn8aHKxSGmhcpeGnfI1Rp4MorfjcwCz/gqgtoiqOY99SK
+maij8J92E5sKpdMpZXhQfjZjVDb91oAW0TdUEXbVVBSjZ4Ku33QwFCm+Qzud/xaT
+lQDrnYx05SITsBAAmOrwfBRo464WfU/0rlXziE2E4wDY4U6IYtbrAcQ=
+=aNWV
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-To make the rest of this post a breeze, we'll also pretend we've created a public key called `MrAndersonPubKey.asc` and that we've recieved a firend's public key which we've saved under `morpheusPubKey.asc`.
+## Task 3: Encrypting Messages
 
-## Encrypting Messages
+You can encrypt a message addressed to a specific recipient using their public key if it is in your keyring. For info on how to export your public key in order to share it with others as well as information about how to import other people's public keys, checkout [Task 1 from part 1]() of this series.
 
-You can encrypt a message addressed to a specific recipient using their public key if it is in your keyring like so:
+To encrypt the file `message.txt` in a way that only Morpheus will be able to decrypt it, we first check that his key in our keyring, then use the `--encrypt` command like so:
 
 ```shell
 # check for the recipient's info in your keyring
-gpg --list-keys
+# the second key here is our friend Morpheus' key we just imported
+$ gpg --list-keys
+pub   rsa1024 2019-09-14 [SC]
+      0E94A26389C660DFE8C2F31705D085D9893479A7
+uid           [ultimate] MrAnderson <MrAnderson@email.com>
+sub   rsa1024 2019-09-14 [E]
 
-gpg --encrypt --armor -r morpheus message.txt
-# produces the file message.txt.asc
+pub   rsa1024 2019-09-14 [SC]
+      5F357B756A571BF8A88567AF06898DFB48E3D899
+uid           [ full ] Morpheus <morpheus@email.com>
+sub   rsa1024 2019-09-14 [E]
+
+# produce the encrypted file message.txt.asc
+$ gpg --encrypt --armor -r Morpheus message.txt
 ```
 
 Always make sure that the public key you use to encrypt is genuine! Call the person, verify on multiple channels, or message them on another encypted platform first before using their public key to encrypt a message. Note that you can enrypt a message to multiple public keys, but that will show up when people decrypt it (in other words you could not fake that a message was encrypted _only_ for someone when in fact it was also encrypted for someone else at the same time).
 
-## Decrypting Messages
+## Task 4: Decrypting Messages
 
-Upon getting the encrypted file, your friend Morpheus could decrypt its content using
+Upon getting the encrypted file, our friend Morpheus could decrypt its content using
 
 ```shell
+# print message to console
+gpg --decrypt message.txt.asc
+
+# send message to file
 gpg --decrypt message.txt.asc > decryptedMessage.txt
 ```

@@ -5,25 +5,26 @@ year: "2019"
 tags: ["gpg"]
 ---
 
-The goal of this post is to get you up to speed on 2 of the main uses of GPG: cryptographically signing and verifying signatures on data.
+The goal of this article is to get you up to speed on 2 of the main uses of GPG: cryptographically signing and verifying signatures on data.
 
 > Note: this post is the first in a series aimed at developing a functional use of GPG for the day to day tasks of anyone who cares about software. Check out [part 2](/gpg-part2) for the lowdown on how to encrypt and decrypt messages.
 
-GPG is a small open source piece of software that allows you to manage keys for cryptographic purposes. One important aspect of cryptographic keys is that they are simply numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
+GPG stands for _GNU Privacy Guard_ and is a small open source piece of software that allows you to manage keys for cryptographic purposes. GPG implements the OpenPGP standard maintained by the Internet Engineering Task Force. In practice, the terms GPG, OpenPGP, and PGP are often used interchangably even thought they probably shouldn't, but you can think of OpenPGP as email and GPG as one implementation of the email protocol, the way Hotmail and Gmail are.
+
+One important aspect of cryptographic keys is that they are simply numbers. Often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, 2 of which we'll tackle here:
 
 1. Signing a piece of data in a way that only a person in knowledge of a specific key could have done.
-   <!-- The validity of that signature is then easily verifiable by any other party. -->
 2. Verify the validity of a signature from someone else on a specific piece of data.
 
 GPG does much more, but this post is really about those 2 basic tasks and related options.
 
-> You should not stop here on your journey to learning about GPG; for information on who invented this whole thing in the first place, go [here](); to understand the difference between GPG and PGP, check out [this article](); to extend your working knowledge further I recommend reading the GPG docs [here]().
+> There is much more to learn about privacy, encryption, and GPG than we cover in this article; for information on who invented this whole thing in the first place, go [here](https://en.wikipedia.org/wiki/Phil_Zimmermann); for more on the difference between GPG and PGP, check out [this article](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference); to dig deeper into the specifics of GPG, check out their docs [here](https://gnupg.org/).
 
 ## Priors
 
 #### Installing the Software
 
-First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), or on Linux using any of the package managers (`apt-get gpg` on Ubuntu for example).
+First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), or on Linux using any of the package managers.
 
 ```shell
 # if this returns a version number, you're good!
@@ -38,7 +39,7 @@ The first thing we'll do is create a key. I recommend creating an test key with 
 $ gpg --full-generate-key  # generate a new key
 ```
 
-The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in GPG. To see what keys pairs are in your keyring, enter
+The process of creating a new key requires we answer some question about key type and size, as well as associate some information with the key. Answer the few questions required to build a key and you should soon find that you now have a key available in your GPG keyring. To see what keys are available, enter
 
 ```shell
 $ gpg --list-keys
@@ -48,7 +49,7 @@ uid           [ultimate] MrAnderson <MrAnderson@email.com>
 sub   rsa1024 2019-09-14 [E]
 ```
 
-We now have a key pair available to us for the tasks below. The `--list-key` command outputs some meta information about the key, as well as a fingerprint (the `0E94A26389C61705D08560DFE8C2F3D9893479A7` part). (what is the fingerprint? What is the difference between that and the public key?)
+We now have a key pair available to us for the tasks below. The `--list-key` command outputs some meta information about the key, as well as a fingerprint—the `0E94A26389C61705D08560DFE8C2F3D9893479A7` part. The fingerprint is a hash of the public key, and can therefore be used for identification.
 
 #### Exporting and Importing Keys
 
@@ -56,6 +57,12 @@ To verify the validity of your signature on data or encrypt messages destined fo
 
 ```
 gpg --export --armor MrAnderson > MrAndersonPubKey.asc
+```
+
+Once you have someone's public key file, you'll need to import it into your keyring before being able to use it.
+
+```
+gpg --import MorpheusPubKey.asc
 ```
 
 #### ASCII-armor Format
@@ -148,7 +155,7 @@ Notice that if we simply have the file but not the public key of the signator in
 
 To validate the signature, we'll first have to import the public key of the signator on our GPG keyring (in this case let's assume your friend Morpheus just sent you his public key in ASCII-armor format—he knows how to export his key because he read Task 1 of this post), and the file is saved under `MorpheusPubKey.asc`. You can import his key in your keyring using
 
-```bash
+```shell
 $ gpg --import morpheusPubKey.asc
 gpg: key 06898DFB48E3D899: public key "Morpheus <morpheus@email.com>" imported
 gpg: Total number processed: 1
