@@ -16,15 +16,15 @@ One important aspect of cryptographic keys is that they are simply numbers. Thes
 1. Signing a piece of data in a way that only a person knowing a specific key could have done.
 2. Verify the validity of a signature from someone else on a specific piece of data.
 
-GPG does much more, but this post is really about those 2 basic tasks and related options.
+GPG does much more, but this post is really about those two basic tasks and related options.
 
-> There is much more to learn about privacy, encryption, and GPG than we cover in this article; for information on who invented this whole thing in the first place, go [here](https://en.wikipedia.org/wiki/Phil_Zimmermann); for more on the difference between GPG and PGP, check out [this article](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference); to dig deeper into the specifics of GPG, check out their docs [here](https://gnupg.org/).
+> There is much more to learn about privacy, encryption, and GPG than I cover in this series; for information on who invented this whole thing in the first place, go [here](https://en.wikipedia.org/wiki/Phil_Zimmermann); for more on the difference between GPG and PGP, check out [this article](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference); to dig deeper into the specifics of GPG, check out their docs [here](https://gnupg.org/).
 
 ## Priors
 
 #### Installing the Software
 
-First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), or on Linux using any of the package managers.
+First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), on Linux using any of the package managers, or on Windows by downloading the binaries directly from the [GnuPG official website](https://gnupg.org/download/index.html).
 
 ```shell
 # if this returns a version number, you're good!
