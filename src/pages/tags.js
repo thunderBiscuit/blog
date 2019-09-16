@@ -12,7 +12,7 @@ class tagsPage extends React.Component {
   }
 
   handleClick = event => {
-    const maybeNewTag = event.target.name
+    const maybeNewTag = event.target.id
     const { currentTags } = this.state
 
     const elem = document.getElementById(event.target.id)
@@ -43,6 +43,8 @@ class tagsPage extends React.Component {
       <Layout>
         <Title>Tags</Title>
         <TagButton onClick={this.handleClick} name={"gpg"} id={"gpg"} />
+        <TagButton onClick={this.handleClick} name={"bip"} id={"bips"} />
+        <TagButton onClick={this.handleClick} name={"bitcoin"} id={"bitcoin"} />
         <div style={{ marginTop: "3rem" }}>
           <h4 id="numberOfPosts">0 Posts</h4>
           {this.props.data.allMarkdownRemark.edges.map(({ node }) => {
