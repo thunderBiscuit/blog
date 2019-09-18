@@ -27,22 +27,13 @@ function Blog() {
         }}
       >
         <h1 class="title" style={{ marginBottom: "1rem" }}>
-          thunder blogging
+          thunder blog
         </h1>
       </div>
       <blockquote>A blog about computers, software, and satoshis.</blockquote>
+      {/* <blockquote>Computers, software, and satoshis.</blockquote> */}
       <br />
       <br />
-      <p>
-        A blog about all sorts of stuff related to computers, web development,
-        and satoshis. Pork belly poutine drinking vinegar gluten-free taxidermy
-        coloring book messenger bag. Brooklyn brunch gluten-free selfies occupy.
-        Tilde pok pok pug, disrupt trust fund synth literally retro lyft
-        everyday carry flexitarian pour-over four dollar toast bitters. Tattooed
-        woke pabst ugh marfa glossier listicle. Listicle taxidermy glossier
-        heirloom, helvetica vaporware try-hard lumbersexual dreamcatcher
-        asymmetrical.
-      </p>
     </Layout>
   )
 }
