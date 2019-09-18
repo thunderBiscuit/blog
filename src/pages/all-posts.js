@@ -26,24 +26,6 @@ export default ({ data }) => (
 
 export const query = graphql`
   query {
-    eighteen: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { year: { eq: "2018" } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMM, YYYY")
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
     nineteen: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { year: { eq: "2019" } } }
