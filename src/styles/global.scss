@@ -1,8 +1,5 @@
-// @import url("https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans|Fira+Mono&display=swap");
-// @import url("https://fonts.googleapis.com/css?family=Fira+Mono&display=swap");
-
-// @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro&display=swap");
 
 body {
   margin: 0;
@@ -15,6 +12,10 @@ p {
 a {
   text-decoration: none;
   color: #bdbdbd;
+  font-family: "Fira Sans", sans-serif;
+}
+
+blockquote {
   font-family: "Fira Sans", sans-serif;
 }
 

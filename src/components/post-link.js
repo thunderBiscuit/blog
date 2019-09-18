@@ -8,7 +8,7 @@ function PostLink({ node, name }) {
         key={node.id}
         style={{
           borderBottom: "1px dashed black",
-          marginTop: "2rem",
+          marginTop: "3rem",
         }}
       >
         <h5
@@ -18,7 +18,12 @@ function PostLink({ node, name }) {
             marginBottom: "0.5rem",
           }}
         >
-          <span style={{ fontWeight: "700", color: "#363636" }}>
+          <span
+            style={{
+              fontWeight: "700",
+              color: "#363636",
+            }}
+          >
             {node.frontmatter.title}
           </span>
           <div class="tags">

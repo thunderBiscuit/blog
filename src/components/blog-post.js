@@ -11,14 +11,16 @@ export default ({ data }) => {
     <Layout>
       <div>
         <Title>{post.frontmatter.title}</Title>
-
         <div
           class="content blog-post"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
       </div>
       <hr />
-      <TagsList>{post.frontmatter}</TagsList>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <h5 style={{ color: "#bdbdbd" }}>{post.frontmatter.date}</h5>
+        <TagsList>{post.frontmatter}</TagsList>
+      </div>
     </Layout>
   )
 }
@@ -29,6 +31,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        date(formatString: "DD MMM, YYYY")
         tags
       }
     }
