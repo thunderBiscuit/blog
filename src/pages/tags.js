@@ -43,8 +43,15 @@ class tagsPage extends React.Component {
       <Layout>
         <Title>Tags</Title>
         <TagButton onClick={this.handleClick} name={"gpg"} id={"gpg"} />
-        <TagButton onClick={this.handleClick} name={"bip"} id={"bips"} />
+        <TagButton onClick={this.handleClick} name={"bip"} id={"bip"} />
         <TagButton onClick={this.handleClick} name={"bitcoin"} id={"bitcoin"} />
+        <TagButton onClick={this.handleClick} name={"rust"} id={"rust"} />
+        <TagButton
+          onClick={this.handleClick}
+          name={"cli-apps"}
+          id={"cli-apps"}
+        />
+        <TagButton onClick={this.handleClick} name={"meta"} id={"meta"} />
         <div style={{ marginTop: "3rem" }}>
           <h4 id="numberOfPosts">0 Posts</h4>
           {this.props.data.allMarkdownRemark.edges.map(({ node }) => {
