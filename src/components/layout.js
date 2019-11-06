@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 export default ({ children }) => (
   <div class="container">
     <div class="columns">
-      <div class="column is-one-quarter">
+      <div class="column is-one-quarter is-hidden-mobile">
         <Link to={`/`}>
           <h3
             style={{
