@@ -36,13 +36,23 @@ ol {
   font-family: "Fira Mono", monospace;
 }
 
-.maincontainer::before {
+@media only screen and (max-width: 1024px) {
+  .container {
+    margin: 0px 32px;
+  }
+}
+
+.container {
+  max-width: 960px;
+}
+
+.container::before {
   content: "";
   display: block;
   height: 3rem;
 }
 
-.maincontainer::after {
+.container::after {
   content: "";
   display: block;
   height: 3rem;
