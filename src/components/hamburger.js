@@ -4,10 +4,10 @@ class Hamburger extends React.Component {
   mobileMenuClick = event => {
     const elem = document.getElementById("mobile-menu")
     console.log("mobileMenuClick was called")
-    if (elem.style.transform === "translateX(-270px)") {
+    if (elem.style.transform === "translateX(-220px)") {
       elem.style.transform = "translateX(0px)"
     } else {
-      elem.style.transform = "translateX(-270px)"
+      elem.style.transform = "translateX(-220px)"
     }
   }
 

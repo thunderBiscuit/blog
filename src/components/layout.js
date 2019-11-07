@@ -43,12 +43,12 @@ class Layout extends React.Component {
           style={{
             marginLeft: "0px",
             top: "3rem",
-            width: "270px",
+            width: "220px",
             height: "100vh",
             backgroundColor: "#ffffff",
             position: "absolute",
-            transform: "translateX(-270px)",
-            transition: "all 0.5s linear",
+            transform: "translateX(-220px)",
+            transition: "all 0.5s ease",
           }}
         >
           <MobileMenu />
