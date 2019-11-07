@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-function MobileMenu(props) {
+function Sidebar(props) {
   return (
     <>
       <Link to={`/`}>
@@ -28,4 +28,4 @@ function MobileMenu(props) {
   )
 }
 
-export default MobileMenu
+export default Sidebar
