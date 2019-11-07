@@ -43,11 +43,11 @@ class Layout extends React.Component {
           style={{
             marginLeft: "0px",
             top: "3rem",
-            width: "300px",
+            width: "270px",
             height: "100vh",
             backgroundColor: "#ffffff",
             position: "absolute",
-            transform: "translateX(-300px)",
+            transform: "translateX(-270px)",
             transition: "all 0.5s linear",
           }}
         >
