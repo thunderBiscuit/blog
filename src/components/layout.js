@@ -1,8 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Hamburger from "./hamburger"
-import MobileMenu from "./mobile-menu"
+import Sidebar from "./sidebar"
 
 class Layout extends React.Component {
   render() {
@@ -10,26 +9,7 @@ class Layout extends React.Component {
       <div class="container">
         <div class="columns">
           <div class="column is-one-quarter is-hidden-mobile">
-            <Link to={`/`}>
-              <p
-                style={{
-                  marginBottom: "3rem",
-                  borderBottom: "2px solid #209cee",
-                  marginRight: "2.5rem",
-                  color: "#363636",
-                  fontFamily: "Fira Sans, sans-serif",
-                }}
-              >
-                thunder-blog
-              </p>
-            </Link>
-            <Link to={`/`}>About</Link>
-            <br />
-            <Link to={`/all-posts/`}>All Posts</Link>
-            <br />
-            <Link to={`/tags/`}>Tags</Link>
-            <br />
-            <Link to={`/contact/`}>Contact</Link>
+            <Sidebar />
           </div>
 
           <div class="column content">
@@ -51,7 +31,7 @@ class Layout extends React.Component {
             transition: "all 0.5s ease",
           }}
         >
-          <MobileMenu />
+          <Sidebar />
           <br />
           <br />
           <Hamburger class={"navbar-burger is-active"} />
