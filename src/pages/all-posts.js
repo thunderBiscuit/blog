@@ -10,7 +10,7 @@ export default ({ data }) => (
     <Title>All posts</Title>
 
     <div style={{ marginTop: "4rem" }}>
-      <h5 style={{ marginBottom: "2rem" }}>
+      <h5 className="title is-5" style={{ marginBottom: "2rem" }}>
         2019
         <span style={{ color: "#bdbdbd" }}>
           {" "}

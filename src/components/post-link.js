@@ -8,29 +8,21 @@ function PostLink({ node, name }) {
         key={node.id}
         style={{
           borderBottom: "1px dashed black",
-          marginTop: "3rem",
+          marginTop: "2rem",
         }}
       >
         <h5
+          className="title is-5"
           style={{
             display: "flex",
             justifyContent: "space-between",
             marginBottom: "0.5rem",
+            fontWeight: "400",
+            fontSize: "18px",
           }}
         >
-          <span
-            style={{
-              fontWeight: "700",
-              color: "#363636",
-            }}
-          >
-            {node.frontmatter.title}
-          </span>
-          <div class="tags">
-            <span style={{ fontWeight: "700", color: "#bdbdbd" }}>
-              {node.frontmatter.date}
-            </span>
-          </div>
+          <span>{node.frontmatter.title}</span>
+          <span style={{ color: "#bdbdbd" }}>{node.frontmatter.date}</span>
         </h5>
       </div>
     </Link>
