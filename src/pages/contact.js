@@ -15,8 +15,8 @@ export default () => (
       <a href="mailto: thunderB@protonmail.com">thunderB@protonmail.com</a>.
     </p>
     <p>
-      If you want to see what I'm up to, check out my GiHub account
-      <a href="https://github.com/thunderBiscuit" target="_blank" rel="noopener noreferrer"> here</a>.
+      If you want to see what I'm up to, check out my GiHub account{" "}
+      <a href="https://github.com/thunderBiscuit" target="_blank" rel="noopener noreferrer">here</a>.
     </p>
   </Layout>
 )
