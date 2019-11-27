@@ -16,7 +16,7 @@ One important aspect of cryptographic keys is that they are simply numbers. Thes
 1. Encrypt a message in a way that only a person with the knowledge of a specific key could decrypt.
 2. Decrypt a message that was encrypted for a private key you own.
 
-> There is much more to learn about privacy, encryption, and GPG than I cover in this series; for information on who invented this whole thing in the first place, go [here](https://en.wikipedia.org/wiki/Phil_Zimmermann); for more on the difference between GPG and PGP, check out [this article](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference); to dig deeper into the specifics of GPG, check out their docs [here](https://gnupg.org/).
+> There is much more to learn about privacy, encryption, and GPG than I cover in this series; for information on who invented this whole thing in the first place, check out [Phil Zimmermann's Wikipedia page](https://en.wikipedia.org/wiki/Phil_Zimmermann); for more on the difference between GPG and PGP, check out [this article](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference); to dig deeper into the specifics of GPG, check out [their docs](https://gnupg.org/).
 
 ## Priors
 
