@@ -1,6 +1,6 @@
 ---
 title: "GPG for the Working Man — Part 2 (encryption)"
-date: "2019-09-12"
+date: "2019-10-31"
 year: "2019"
 tags: ["gpg"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Bitcoin: A Primer for Your Mother"
-date: "2019-09-18"
+date: "2019-10-31"
 year: "2019"
 tags: ["bitcoin"]
 ---

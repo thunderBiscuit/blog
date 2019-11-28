@@ -1,6 +1,6 @@
 ---
 title: "self.blog"
-date: "2019-09-09"
+date: "2019-11-01"
 year: "2019"
 tags: ["meta"]
 ---
