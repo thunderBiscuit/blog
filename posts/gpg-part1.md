@@ -1,6 +1,6 @@
 ---
 title: "GPG for the Working Man — Part 1 (signatures)"
-date: "2019-12-01"
+date: "2020-01-01"
 year: "2019"
 tags: ["gpg"]
 ---
