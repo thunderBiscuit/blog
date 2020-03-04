@@ -1,7 +1,7 @@
 ---
 title: "Tiny Rust-CLI 1: Sending Emails From Your Command Line"
-date: "2019-10-31"
-year: "2019"
+date: "2020-02-01"
+year: "2020"
 tags: ["rust", "cli-apps"]
 ---
 
