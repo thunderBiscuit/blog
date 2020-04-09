@@ -32,7 +32,8 @@
     "prettier": "^1.18.2"
   },
   "resolutions": {
-    "serialize-javascript": "^2.1.1"
+    "serialize-javascript": "^2.1.1",
+    "acorn": "^6.4.1"
   },
   "repository": {
     "type": "git",
