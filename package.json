@@ -33,7 +33,8 @@
   },
   "resolutions": {
     "serialize-javascript": "^2.1.1",
-    "acorn": "^6.4.1"
+    "acorn": "^6.4.1",
+    "minimist": "^1.2.3"
   },
   "repository": {
     "type": "git",
