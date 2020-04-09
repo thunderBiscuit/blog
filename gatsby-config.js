@@ -94,12 +94,6 @@ module.exports = {
         icon: `src/images/favicon.png`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-typography`,
-    //   options: {
-    //     pathToConfigModule: `src/utils/typography`,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-catch-links`,
     },
