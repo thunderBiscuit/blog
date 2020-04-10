@@ -4,9 +4,18 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-sharp`,
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 738,
+            }
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -45,20 +54,20 @@ module.exports = {
               // existing language definition. More details on this option can be
               // found under the header "Add new language definition or extend an
               // existing language" below.
-              languageExtensions: [
-                {
-                  language: "superscript",
-                  extend: "javascript",
-                  definition: {
-                    superscript_types: /(SuperType)/,
-                  },
-                  insertBefore: {
-                    function: {
-                      superscript_keywords: /(superif|superelse)/,
-                    },
-                  },
-                },
-              ],
+              // languageExtensions: [
+              //   {
+              //     language: "superscript",
+              //     extend: "javascript",
+              //     definition: {
+              //       superscript_types: /(SuperType)/,
+              //     },
+              //     insertBefore: {
+              //       function: {
+              //         superscript_keywords: /(superif|superelse)/,
+              //       },
+              //     },
+              //   },
+              // ],
               // Customize the prompt used in shell output
               // Values below are default
               prompt: {
@@ -83,6 +92,13 @@ module.exports = {
       options: {
         name: `posts`,
         path: `${__dirname}/posts/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
       },
     },
     {
