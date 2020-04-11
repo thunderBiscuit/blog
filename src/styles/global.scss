@@ -37,10 +37,25 @@ a:hover {
 
 blockquote {
   font-family: "Fira Sans", sans-serif;
+  font-size: 16px;
+  margin: 2em 0;
 }
+
+.content blockquote:not(:last-child) {
+  margin: 2em 0;
+}
+
 
 ol {
   font-family: "Fira Sans", sans-serif;
+}
+
+img {
+  border-radius: 16px;
+}
+
+pre[class*="language-"] {
+  margin: 2em 0 2em 0;
 }
 
 .button {
@@ -79,7 +94,8 @@ ol {
 }
 
 .blog-post {
-  font-size: 1rem;
+  font-size: 18px;
+  line-height: 28px;
 }
 
 // .content .tag,
@@ -107,4 +123,61 @@ ol {
   #mobile-menu {
     display: none;
   }
+}
+
+// main colour for address is     #48c774
+// main colour for transaction is #ffaa00
+// main colour for block is       #1d71f7
+// background is 90% tint
+// hover is 80% tint
+
+.bitcoin-address {
+  color: #48c774; 
+  border: 1px solid #48c774;
+  font-family: 'Fira Code', monospace; 
+  font-size: 13px;
+  white-space: nowrap;
+  border-radius: 6px;
+  background-color: #edf9f1; // 90% tint
+}
+
+.bitcoin-address:hover {
+  text-decoration: none;
+  color: #48c774;
+  // background-color: #c8eed5; // 70% tint
+  background-color: #daf4e3; // 80% tint
+}
+
+.bitcoin-transaction {
+  color: #ffaa00;
+  border: 1px solid #ffaa00; 
+  font-family: 'Fira Code', monospace; 
+  font-size: 13px; 
+  white-space: nowrap;
+  border-radius: 6px;
+  background-color: #fff7e6; // 90% tint
+}
+
+.bitcoin-transaction:hover {
+  text-decoration: none;
+  color: #ffaa00;
+  // background-color: #ffe6b3; // 70% tint
+  background-color: #ffeecc; // 80% tint
+}
+
+.bitcoin-block {
+  color: #1d71f7;
+  border: 1px solid #1d71f7; 
+  font-family: 'Fira Code', monospace; 
+  font-size: 13px; 
+  white-space: nowrap;
+  border-radius: 6px;
+  background-color: #e8f1fe; // 90% tint
+}
+
+.bitcoin-block:hover {
+  text-decoration: none;
+  color: #1d71f7;
+  // background-color: #bbd4fd; // 70% tint
+  background-color: #d2e3fd; // 80% tint
 }
