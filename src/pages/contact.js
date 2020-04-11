@@ -5,7 +5,7 @@ import Title from "../components/title"
 
 export default () => (
   <Layout>
-    <Title>Contact me</Title>
+    <Title>contact me</Title>
     <p>
       You can follow or message me on Twitter at&nbsp;
       <a href="https://twitter.com/thunderB__" target="_blank" rel="noopener noreferrer">@thunderB__</a>.

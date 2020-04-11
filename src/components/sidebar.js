@@ -14,16 +14,16 @@ function Sidebar(props) {
             fontFamily: "Fira Sans, sans-serif",
           }}
         >
-          thunder-blog
+          thunder blog
         </p>
       </Link>
-      <Link to={`/`}>About</Link>
+      <Link to={`/`}>about</Link>
       <br />
-      <Link to={`/all-posts/`}>All Posts</Link>
+      <Link to={`/all-posts/`}>all posts</Link>
       <br />
-      <Link to={`/tags/`}>Tags</Link>
+      <Link to={`/tags/`}>tags</Link>
       <br />
-      <Link to={`/contact/`}>Contact</Link>
+      <Link to={`/contact/`}>contact</Link>
     </>
   )
 }
