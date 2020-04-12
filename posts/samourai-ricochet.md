@@ -123,6 +123,17 @@ always in the same block (625,193). 1,114 satoshis are paid in miner fees.
   </figure>
 </center>
 
+<br />
 
-# Notes
-Note that your wallet needs to have 0.002 btc more than the amount you wish to spend, otherwise there will not be enough bitcoin for the Samourai fee for ricochet, and the ricochet feature will be dropped automatically from the send.
+## UX and Staggered Delivery
+Once in your _Send_ screen, use the ricochet toggle button to turn your regular send into a ricochet send.
+
+<center>
+  <figure style="max-width: 300px; margin: 3rem 0;">
+    <p style="font-family: 'Fira Code', monospace; font-size: 16px; font-weight: 600;">Send Screen<p>
+    <img src="../src/images/posts/samourai-ricochet/ricochet-screenshot.png">
+    <p style="font-family: 'Fira Code', monospace; font-size: 11px; line-height: 20px; text-align: left !important;">The ricochet toggle is under the Privacy Addons section of your Send screen.</p>
+  </figure>
+</center>
+
+Notice that the transactions we explored above were all broadcasted at the same time and included in the same block. Samourai offers the option to stagger each transaction into their own block by waiting for the first hop to be mined before broadasting the second hop, and so on. This increases privacy protection one step further by working against tools that would incorporate time correlations in their analysis. It is offered at no extra cost, and should be your default ricochet type unless you are in a time crunch.
