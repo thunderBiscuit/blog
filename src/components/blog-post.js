@@ -12,7 +12,7 @@ export default ({ data }) => {
       <div>
         <Title>{post.frontmatter.title}</Title>
         <div
-          class="content blog-post"
+          className="content blog-post"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
       </div>

@@ -6,13 +6,13 @@ import Sidebar from "./sidebar"
 class Layout extends React.Component {
   render() {
     return (
-      <div class="container">
-        <div class="columns">
-          <div class="column is-one-quarter is-hidden-mobile">
+      <div className="container">
+        <div className="columns">
+          <div className="column is-one-quarter is-hidden-mobile">
             <Sidebar />
           </div>
 
-          <div class="column content">
+          <div className="column content">
             <Hamburger class={"navbar-burger"} />
             {this.props.children}
           </div>

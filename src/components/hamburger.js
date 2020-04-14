@@ -14,7 +14,7 @@ class Hamburger extends React.Component {
     return (
       <button
         // role="button"
-        class={this.props.class}
+        className={this.props.class}
         aria-label="menu"
         aria-expanded="false"
         href="#"
