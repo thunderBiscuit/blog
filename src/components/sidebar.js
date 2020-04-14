@@ -17,13 +17,13 @@ function Sidebar(props) {
           thunder blog
         </p>
       </Link>
-      <Link to={`/`}>about</Link>
+      <Link to={`/`} className="sidebar-link">about</Link>
       <br />
-      <Link to={`/all-posts/`}>all posts</Link>
+      <Link to={`/all-posts/`} className="sidebar-link">all posts</Link>
       <br />
-      <Link to={`/tags/`}>tags</Link>
+      <Link to={`/tags/`} className="sidebar-link">tags</Link>
       <br />
-      <Link to={`/contact/`}>contact</Link>
+      <Link to={`/contact/`} className="sidebar-link">contact</Link>
     </>
   )
 }

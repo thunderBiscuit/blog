@@ -1,6 +1,6 @@
 // @import url("https://fonts.googleapis.com/css?family=Fira+Code:300,400,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700&display=swap");
 
 html {
   font-size: 16px;
@@ -16,7 +16,6 @@ h3,
 h4,
 h5,
 h6 {
-  // font-family: "Source Sans Pro", sans-serif;
   font-family: "Fira Sans", sans-serif;
 }
 
@@ -26,12 +25,22 @@ p {
 
 a {
   text-decoration: none;
-  color: #bdbdbd;
+  color: #209cee;
   font-family: "Fira Sans", sans-serif;
+  font-weight: 600;
 }
 
 a:hover {
   text-decoration: none;
+  color: #bdbdbd;
+}
+
+a[class="sidebar-link"] {
+  color: #bdbdbd;
+  font-weight: 400;
+}
+
+a[class="sidebar-link"]:hover {
   color: #209cee;
 }
 
@@ -44,7 +53,6 @@ blockquote {
 .content blockquote:not(:last-child) {
   margin: 2em 0;
 }
-
 
 ol {
   font-family: "Fira Sans", sans-serif;
@@ -95,7 +103,7 @@ pre[class*="language-"] {
 
 .blog-post {
   font-size: 18px;
-  line-height: 28px;
+  line-height: 30px;
 }
 
 // .content .tag,
@@ -144,7 +152,6 @@ pre[class*="language-"] {
 .bitcoin-address:hover {
   text-decoration: none;
   color: #48c774;
-  // background-color: #c8eed5; // 70% tint
   background-color: #daf4e3; // 80% tint
 }
 
@@ -161,7 +168,6 @@ pre[class*="language-"] {
 .bitcoin-transaction:hover {
   text-decoration: none;
   color: #ffaa00;
-  // background-color: #ffe6b3; // 70% tint
   background-color: #ffeecc; // 80% tint
 }
 
@@ -178,6 +184,5 @@ pre[class*="language-"] {
 .bitcoin-block:hover {
   text-decoration: none;
   color: #1d71f7;
-  // background-color: #bbd4fd; // 70% tint
   background-color: #d2e3fd; // 80% tint
 }
