@@ -8,7 +8,7 @@ function PostLink({ node, name }) {
         key={node.id}
         style={{
           borderBottom: "1px dashed #bdbdbd",
-          marginTop: "2rem",
+          marginTop: "3rem",
         }}
       >
         <h5
