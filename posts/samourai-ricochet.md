@@ -1,23 +1,23 @@
 ---
 title: "Know your Samourai — Ricochet"
-date: "2020-03-01"
+date: "2020-04-02"
 year: "2020"
-tags: ["bitcoin"]
+tags: ["bitcoin", "samourai"]
 ---
 
 Ricochet is a feature that allows users to put a form of "distance" between two UTXOs. It is a very simple procedure, developed to respond to a type of equally very simple heuristic that is sometimes used by chain analysis tools.
 
 <center>
-  <figure style="max-width: 500px; margin: 3rem 0;">
+  <figure style="max-width: 600px; margin: 3rem 0;">
     <p style="font-family: 'Fira Code', monospace; font-size: 16px; font-weight: 600;">Ricochet Visualization<p>
-    <img style="border-radius: 10px;" src="../src/images/posts/samourai-ricochet/ricochet-green.png">
+    <img src="../src/images/posts/samourai-ricochet/ricochet-green.png">
     <p style="font-family: 'Fira Code', monospace; font-size: 11px; line-height: 20px; text-align: left !important;">The payor (blue and green circle on the left) and the payee (small square far right) are separated by 4 extra transactions than they otherwise would be under a direct payment.<p>
   </figure>
 </center>
 
-> **Know your Samourai** is a series of articles diving head first into Samourai, a bitcoin wallet focused on privacy. The articles are aimed at chewing through one by one the set of features the wallet offers from a curious user perspective. We do things like following UTXOs through a Ricochet transactions, for example, in order to gain deep intuition as to what is happening every time we use the many features of this power-user oriented wallet. Check out the [introduction article](#) for an overview of the series' goals and the tools recommended to get the most out of it.
+> **Know your Samourai** is a series of articles diving head first into Samourai, a bitcoin wallet focused on privacy. The articles are aimed at chewing through one by one the set of features the wallet offers from a curious user perspective. We do things like following UTXOs through a Ricochet transaction, for example, in order to gain deep intuition as to what is happening every time we use the wallet. Check out the [introduction article](#) for an overview of the series' goals and the tools recommended to get the most out of it.
 
-A good example of where a ricochet transaction might be useful is how certain exchanges have been known to refuse accepting a payment made with a utxo that has proximity to a coinjoin. The term _proximity_ here is meant to be interpreted as "the number of transactions done between the payment transaction and the coinjoin transaction. Because going back into UTXO histories is computationally costly, chain analysis tools can only go so far back. The goal of ricochet is to put just a few more transactions between the payor and the payee than would be investigated by most chain analysis tools.
+A good example of where a ricochet transaction might be useful is how certain exchanges have been known to refuse accepting a payment made with a utxo that has proximity to a coinjoin. The term _proximity_ here is meant to be interpreted as "the number of transactions done between the payment transaction and the coinjoin transaction". Because going back into UTXO histories is computationally costly, chain analysis tools only go so far back. The goal of ricochet is to put just a few more transactions between the payor and the payee than would be investigated by most chain analysis tools.
 
 Take for example the situation where a chain analysis tool would flag a payment as being troublesome if it was 1 step removed from a known address it considered tainted for whatever reason. If you had recieved payment from that address and send that UTXO to an exchange, the chain analysis tool they use would (1) ensure your UTXO is not tainted, and (2) look at the UTXO _it came from_ and see if that UTXO is tainted. In this case it would be, and your payment would be flagged as non valid.
 
@@ -33,11 +33,9 @@ tainted_utxo -> your_utxo -> hop1 -> hop2 -> hop3 -> hop4 -> exchange
 
 Now a chain analysis tool going back only, say, 3 hops, will not find anything tainted about any of the utxos on the chain leading up to your payment.
 
-<br />
-
 ## Ricochet in Practice
 
-Let us follow a whole ricochet set of transactions (should we call them _ricochets_?—the name of the feature comes from the French word _ricochet_, meaning small bounces) from top to bottom using blockchain exploration tools. Note that all 
+Let us follow a whole ricochet set of transactions (should we call them _ricochets_?) from top to bottom using blockchain exploration tools. Note that all 
   <a href="#" class="bitcoin-block" target="_blank">&nbsp; blocks &nbsp;</a>, 
   <a href="#" class="bitcoin-transaction" target="_blank">&nbsp; transactions &nbsp</a>, and
   <a href="#" class="bitcoin-address" target="_blank">&nbsp addresses &nbsp</a>
@@ -118,18 +116,16 @@ always in the same block (625,193). 1,114 satoshis are paid in miner fees.
 <center>
   <figure style="max-width: 500px; margin: 3rem 0;">
     <p style="font-family: 'Fira Code', monospace; font-size: 16px; font-weight: 600;">Ricochet Visualization<p>
-    <img style="border-radius: 10px;" src="../src/images/posts/samourai-ricochet/ricochet-annotated.png">
+    <img src="../src/images/posts/samourai-ricochet/ricochet-annotated.png">
     <p style="font-family: 'Fira Code', monospace; font-size: 11px; line-height: 20px; text-align: left !important;">Full ricochet transaction series.<p>
   </figure>
 </center>
-
-<br />
 
 ## UX and Staggered Delivery
 Once in your _Send_ screen, use the ricochet toggle button to turn your regular send into a ricochet send.
 
 <center>
-  <figure style="max-width: 300px; margin: 3rem 0;">
+  <figure style="max-width: 200px; margin: 3rem 0;">
     <p style="font-family: 'Fira Code', monospace; font-size: 16px; font-weight: 600;">Send Screen<p>
     <img src="../src/images/posts/samourai-ricochet/ricochet-screenshot.png">
     <p style="font-family: 'Fira Code', monospace; font-size: 11px; line-height: 20px; text-align: left !important;">The ricochet toggle is under the Privacy Addons section of your Send screen.</p>
