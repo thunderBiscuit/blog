@@ -31,6 +31,7 @@ pre[class*="language-"] {
   word-break: break-all;
   word-wrap: break-word;
   background: #322931;
+  /* background: #282c34; */
   color: #b9b5b8;
 }
 
@@ -47,6 +48,9 @@ pre[class*="language-"] {
   padding: 2px 9px 2px 9px;
   margin: 0px 0.3em 0px 0.3em;
   border-radius: 0.2em;
+  background: #f3f3f3;
+  color: #476582;
+  vertical-align: middle;
 }
 
 .token.comment,
