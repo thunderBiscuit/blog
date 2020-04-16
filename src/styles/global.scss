@@ -77,6 +77,10 @@ pre[class*="language-"] {
   margin: 2em 0 2em 0;
 }
 
+li::marker {
+  font-weight: 600;
+}
+
 .button {
   font-family: "Fira Code", monospace;
 }
