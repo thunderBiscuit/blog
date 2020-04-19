@@ -2,12 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Title from "../components/title"
+import TitleAllPosts from "../components/title-all-posts"
 import PostLink from "../components/post-link"
 
 export default ({ data }) => (
   <Layout>
-    <Title>all posts</Title>
+    <TitleAllPosts>all posts</TitleAllPosts>
 
     <div style={{ marginTop: "4rem" }}>
       <h5 className="title is-5" style={{ marginBottom: "2rem" }}>
