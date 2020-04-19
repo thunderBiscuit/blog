@@ -26,7 +26,7 @@ export default ({ data }) => (
         2019
         <span style={{ color: "#bdbdbd" }}>
           {" "}
-          — {data.twenty.totalCount} Posts
+          — {data.nineteen.totalCount} Posts
         </span>
       </h5>
       {data.nineteen.edges.map(({ node }) => (
