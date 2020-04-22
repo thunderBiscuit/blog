@@ -11,7 +11,7 @@ The goal of this post is to get you up to speed on two of the main uses of GPG: 
 
 GPG stands for _GNU Privacy Guard_ and is a small open source piece of software that allows you to manage keys for cryptographic purposes. GPG implements the OpenPGP standard maintained by the Internet Engineering Task Force. In practice, the terms GPG, OpenPGP, and PGP are often used interchangably even though they probably shouldn't be. You can think of OpenPGP as email and GPG as one implementation of the email protocol (like Hotmail or Gmail).
 
-One important aspect of cryptographic keys is that they are simply numbers. These are often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, two of which we'll tackle here:
+One important aspect of cryptographic keys is that they are _simply numbers_. They are often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, two of which we'll tackle here:
 
 1. Encrypt a message in a way that only a person with the knowledge of a specific key could decrypt.
 2. Decrypt a message that was encrypted for a private key you own.
@@ -22,15 +22,15 @@ One important aspect of cryptographic keys is that they are simply numbers. Thes
 
 <em>This section is the same as the Priors section from [Part 1](/gpg-part1). If you have already set up gpg, created a key, exported it, and imported other people's keys, you can safely move on to [Task 3]() on encrypting messages.</em>
 
-#### Create Keys
+#### Creating Keys
 
-The first thing that we want to do is create a key. I recommend creating an test key with a simple password to use for the rest of this tutorial, and deleting it afterwards:
+The first thing that we want to do is create a key set (a public and a private key pair). I recommend creating an set of test keys with a simple password to use for the rest of this tutorial, and deleting it afterwards:
 
 ```shell
 $ gpg --full-generate-key  # generate a new key
 ```
 
-The process of creating a new key requires that we answer some question about key type and size, as well as associate some information with the key. If you answer the few questions required to build a key, you should soon find that you now have a key available in your GPG keyring. To see what keys are available, enter:
+The process of creating a new key pair requires that we answer some question about key type and size, as well as associate some information with the keys. If you answer the few questions required to build keys, you should soon find that you now have a key set available in your GPG keyring. To see what keys are available, enter:
 
 ```shell
 $ gpg --list-keys
@@ -124,9 +124,11 @@ lQDrnYx05SITsBAAmOrwfBRo464WfU/0rlXziE2E4wDY4U6IYtbrAcQ=
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
+Both the binary format and the ASCII-armor format are representations of the same data, but you'll find that the ASCII-armor is much easier to share (for example you could copy/paste it in an email or a text message).
+
 ## Task 3: Encrypting Messages
 
-You can encrypt a message addressed to a specific recipient using their public key if it is in your keyring. For info on how to export your public key in order to share it with others as well as information about how to import other people's public keys, checkout [Task 1 from part 1]() of this series.
+You can encrypt a message addressed to a specific recipient using their public key if it is in your keyring. For information on how to export your public key in order to share it with others as well as information about how to import other people's public keys, check out [Task 1 from part 1]() of this series.
 
 To encrypt the file `message.txt` in a way that only Morpheus will be able to decrypt it, we first check that his key in our keyring, then use the `--encrypt` command like so:
 
