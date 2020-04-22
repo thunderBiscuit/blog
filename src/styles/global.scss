@@ -215,3 +215,174 @@ li::marker {
   border-left: 5px solid #fae042;
   line-height: 26px;
 }
+
+// collapsible sections
+
+input[type='checkbox'] {
+  display: none;
+}
+
+// button style
+.lbl-toggle {
+  display: block;
+
+  font-family: "Fira Code", monospace;
+  text-align: center;
+
+  padding: 1rem;
+
+  color: #a77b0e;
+  background: #fae042;
+
+  cursor: pointer;
+
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:not(.first-collapsible) {
+  margin-top: 2rem;
+}
+
+.lbl-toggle:hover {
+  color: #7C5A0B;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+
+  transition: transform .2s ease-out;
+}
+
+// collapsible 0
+.collapsible-content-0 .content-inner-0 {
+  border-right: 3px solid #fae042;
+  border-bottom: 3px solid #fae042;
+  border-left: 3px solid #fae042;
+
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
+.collapsible-content-0 {
+  max-height: 0px;
+  overflow: hidden;
+
+  transition: max-height 1.25s ease-in-out;
+}
+
+.toggle-0:checked + .lbl-toggle + .collapsible-content-0 {
+  max-height: 200vh;
+}
+
+.toggle-0:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle-0:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+// collapsible 1
+.collapsible-content-1 .content-inner-1 {
+  border-right: 3px solid #fae042;
+  border-bottom: 3px solid #fae042;
+  border-left: 3px solid #fae042;
+
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
+.collapsible-content-1 {
+  max-height: 0px;
+  overflow: hidden;
+
+  transition: max-height 1.25s ease-in-out;
+}
+
+.toggle-1:checked + .lbl-toggle + .collapsible-content-1 {
+  max-height: 100vh;
+}
+
+.toggle-1:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle-1:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+// collapsible 2
+.collapsible-content-2 .content-inner-2 {
+  border-right: 3px solid #fae042;
+  border-bottom: 3px solid #fae042;
+  border-left: 3px solid #fae042;
+
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
+.collapsible-content-2 {
+  max-height: 0px;
+  overflow: hidden;
+
+  transition: max-height 1.25s ease-in-out;
+}
+
+.toggle-2:checked + .lbl-toggle + .collapsible-content-2 {
+  max-height: 200vh;
+}
+
+.toggle-2:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle-2:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+// collapsible 3
+.collapsible-content-3 .content-inner-3 {
+  border-right: 3px solid #fae042;
+  border-bottom: 3px solid #fae042;
+  border-left: 3px solid #fae042;
+
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
+.collapsible-content-3 {
+  max-height: 0px;
+  overflow: hidden;
+
+  transition: max-height 1.25s ease-in-out;
+}
+
+.toggle-3:checked + .lbl-toggle + .collapsible-content-3 {
+  max-height: 200vh;
+}
+
+.toggle-3:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle-3:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
