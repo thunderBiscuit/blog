@@ -11,12 +11,12 @@ The goal of this article is to get you up to speed on two of the main uses of GP
 
 GPG stands for _GNU Privacy Guard_ and is a small open source piece of software that allows you to manage keys for cryptographic purposes. GPG implements the OpenPGP standard maintained by the Internet Engineering Task Force. In practice, the terms GPG, OpenPGP, and PGP are often used interchangably even though they probably shouldn't be. You can think of OpenPGP as email and GPG as one implementation of the email protocol (like Hotmail or Gmail).
 
-One important aspect of cryptographic keys is that they are simply numbers. These are often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, two of which we'll tackle here:
+One important aspect of cryptographic keys is that they are _simply numbers_. They are often really, really big numbers, but simple integers nonetheless. Another important aspect of cryptographic keys as used in GPG is that they come in pairs: a _public_ key and a _private_ key. Knowledge of these numbers (the keys) allows us to perform many tasks, two of which we'll tackle here:
 
 1. Signing a piece of data in a way that only a person knowing a specific key could have done.
 2. Verify the validity of a signature from someone else on a specific piece of data.
 
-GPG does much more, but this post is really about those two basic tasks and related options.
+GPG does much more, but this post is really about those two basic tasks and thier related options.
 
 > There is much more to learn about privacy, encryption, and GPG than I cover in this series; for information on who invented this whole thing in the first place, check out [Phil Zimmermann's Wikipedia page](https://en.wikipedia.org/wiki/Phil_Zimmermann); for more on the difference between GPG and PGP, check out [this article](https://www.goanywhere.com/blog/2013/07/18/openpgp-pgp-gpg-difference); to dig deeper into the specifics of GPG, check out [their docs](https://gnupg.org/).
 
@@ -24,22 +24,22 @@ GPG does much more, but this post is really about those two basic tasks and rela
 
 #### Installing the Software
 
-First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), on Linux using any of the package managers, or on Windows by downloading the binaries directly from the [GnuPG official website](https://gnupg.org/download/index.html).
+First, make sure you have GPG installed on your computer. You can get it on MacOS using homebrew (`brew install gpg`), on Linux using any of the package managers, or on Windows by downloading the binaries directly from the [GnuPG official website](https://gnupg.org/download/index.html). You will also need a bash terminal to interact with the software.
 
 ```shell
 # if this returns a version number, you're good!
 $ gpg --version
 ```
 
-#### Create Keys
+#### Creating Keys
 
-The first thing that we want to do is create a key. I recommend creating an test key with a simple password to use for the rest of this tutorial, and deleting it afterwards:
+The first thing that we want to do is create a key set (a public and a private key pair). I recommend creating an set of test keys with a simple password to use for the rest of this tutorial, and deleting it afterwards:
 
 ```shell
 $ gpg --full-generate-key  # generate a new key
 ```
 
-The process of creating a new key requires that we answer some question about key type and size, as well as associate some information with the key. If you answer the few questions required to build a key, you should soon find that you now have a key available in your GPG keyring. To see what keys are available, enter:
+The process of creating a new key pair requires that we answer some question about key type and size, as well as associate some information with the keys. If you answer the few questions required to build keys, you should soon find that you now have a key set available in your GPG keyring. To see what keys are available, enter:
 
 ```shell
 $ gpg --list-keys
@@ -99,13 +99,15 @@ lQDrnYx05SITsBAAmOrwfBRo464WfU/0rlXziE2E4wDY4U6IYtbrAcQ=
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
+Both the binary format and the ASCII-armor format are representations of the same data, but you'll find that the ASCII-armor is much easier to share (for example you could copy/paste it in an email or a text message).
+
 ## Task 1: Sign a document (without encrypting it)
 
 Signing a document (or any piece of data) creates proof that the document was signed by the owner of a specific public key, and that the document was not tampered with after the signature. Note that the signature is completely agnostic to the data it is signing, meaning that we can use GPG to sign sound data, text data, image data, or any other type of data we want.
 
 The goal here is really to sign an _open_ document. There is no encryption of the document in this procedure. As such, the document is usable by anyone whether or not they can verify its signature.
 
-One of the common objectives of signatures is to attest that a specific version of the data is being stored or sent across a network. Once a piece of data has been signed, changing a single bit in the data will render the signature invalid. This is why, for example, the lead maintainer of the bitcoin core software will sign the downloadable releases of the software. Once downloaded, you can test for yourself whether his or her signature is valid on the download you just performed. If the signature is valid, you are in posession of the exact same piece of code that he or she signed. If the signature is invalid, the download was tampered with on its way to you. You can use this as an assurance that the software you download is trustworthy without having to trust the network you download it on.
+One of the common objectives of signatures is to attest that a specific version of the data is being stored or sent across a network. Once a piece of data has been signed, changing a single bit in the data will render the signature invalid. This is why, for example, the lead maintainer of the bitcoin core software will sign the downloadable releases of the software. Once downloaded, you can test for yourself whether his or her signature is valid on the download you just performed. If the signature is valid, you are in posession of the exact same piece of code that he or she signed. If the signature is invalid, the download was tampered with on its way to you. You can use this as an assurance that the software you download is trustworthy without having to trust the network you download it on. Note that it does not prevent the signator from writing bugs or malware into the software at all—it only attests to the fact that the version in your possession is the same as the version that was signed, bit for bit.
 
 Let us suppose you have a file called `message.txt` in your current directory with the content `hello, world`, and that you wish to sign it.
 
@@ -137,7 +139,7 @@ eQA=
 
 ```
 
-You can then copy and paste this anywhere to share or store the signed message. For example you could send it as a text, or include it in an email.
+You can then copy and paste this anywhere to share or store the signed message. For example you could post it publicly on a website, send it as a text, or even write it down on a piece of paper.
 
 ## Task 2: Verify the signature of a document
 
@@ -151,7 +153,7 @@ gpg:                issuer "morpheus@email.com"
 gpg: Can't check signature: No public key
 ```
 
-Notice that if we simply have the file but not the public key of the signator in your keyring, the `--verify` command will state that the signature could not be verified as valid.
+Note that if you simply have the file but not the public key of the signator in your keyring, the `--verify` command will state that the signature could not be verified as valid.
 
 To validate the signature, we'll first have to import the public key of the signator on our GPG keyring. In this case let's assume your friend Morpheus just sent you his public key in ASCII-armor format (he knows how to export his key because he read Task 1 of this post), and the file is saved under `MorpheusPubKey.asc`. You can import his key in your keyring using:
 
@@ -177,17 +179,17 @@ uid           [ unknown] Morpheus <morpheus@email.com>
 sub   rsa1024 2019-09-14 [E]
 ```
 
-When first importing a key, it won't be _certified_ by default (GPG does not assume you _really_ know that the key is the key from the person who it says it belongs to). They key could have been tampered with on its way to you, and anyone can create keys with anyone else's name. GPG does not, in any way, verify that you are the person who's name you are using to create a key.
+When first importing a key, it won't be _certified_ by default (GPG does not assume you _really_ know that the key is the key from the person who it says it belongs to). The key could have been tampered with on its way to you, and anyone can create keys with anyone else's name. GPG does not, in any way, verify that you are the person who's name you are using to create a key.
 
-If you really are certain (it is recommended that you check using multiple sources, or that you take the time to call or text the person to verify that the fingerprint is indeed the right one), you can sign that key yourself with your own private key, adding a layer of protection to the validity of your friend's public key in your key ring.
+It is recommended that you check that the key in your keyring belongs to the person you think it does using multiple sources, or that you take the time to call or text the person to verify. Once that is done, you can sign that key _yourself_ with your own private key, adding a layer of protection to the validity of your friend's public key in your key ring.
 
 ```shell
-gpg -sign-key Morpheus
+gpg --sign-key Morpheus
 ```
 
 This will identify the key as `[full]` instead of `[unknown]` in our keyring. Notice that we do not need to sign a public key to use it in signature verification; it simply is an added layer of certainty when verifying signatures.
 
-Once we have the public key of the signator of the piece of data we wish to verify in our keyring, we can do so in one line of code. GPG will print the result of the signature verification on the console. In the case of a valid signature, it would look like this:
+Once we have the public key of the signator of the piece of data we wish to verify in our keyring, we can verify the signature on any file in one line of code. GPG will print the result of the signature verification on the console. In the case of a valid signature, it would look like this:
 
 ```bash
 gpg --verify message_from_Morpheus.txt.asc
@@ -249,7 +251,7 @@ nwMA
 -----END PGP MESSAGE-----
 ```
 
-Using the `--clearsign` command rather than the `--sign` one on ASCII-armor format to sign a document will include the original data in the signed file. (this is a crazy sentence I don't understand - maybe try this? But make sure it is correct.... Using the `--clearsign` command on ASCII-armor format to sign a document, rather than the `--sign` command, will include the original data in the signed file.) The resulting file keeps the signed message at the top, making it easy to parse, whether we verify the signature or not.
+Using the `--clearsign` command on ASCII-armor format to sign a document (rather than the `--sign` command) will include the original data in the signed file. The resulting file keeps the signed message at the top, making it easy to parse, whether we verify the signature or not.
 
 ```bash
 $ gpg --clearsign --armor message.txt
@@ -274,9 +276,9 @@ LqCZpsWEDkzihjVwKSRz1UNIm1Egg4jyEV2ZY32dJnveN6wCiB1ABMe1zvB3G2cI
 
 A popular way to sign software is through the use of _detached signatures_. A detached signature is a small file that sits _external_ to the actual softare or piece of data being signed.
 
-Detached signatures have one great advantage over normal signatures: because they are separate, they are not mandatory in order to use the data. The signatures for popular software (say, Python, for example), are downloaded separately, and therefore do not interfere with one's ability to simply download and start using (start using what? I think you need another noun here but I don't know what it is). On the other hand, verifying the validity of such signatures is just as easy as it is with regular signatures.
+Detached signatures have one great advantage over normal signatures: because they are separate, they are not mandatory in order to use the data. The signatures for popular software (say, Python, for example), are downloaded separately, and therefore do not interfere with one's ability to simply download and start using the software. On the other hand, verifying the validity of such signatures is just as easy as it is with regular signatures.
 
-We detach the signed data (I'm not sure if 'sign data' is right? If it is, I would put in quotes or something to make it clear) using the following command, which will produce a small file called `mySoftware.dmg.sig`:
+We create a detached signature using the following command, which will produce a small file called `mySoftware.dmg.sig`:
 
 ```shell
 $ gpg --detach-sign mySoftware.dmg
