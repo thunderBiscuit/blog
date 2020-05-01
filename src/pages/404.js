@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import lightning from "../images/lightning.png"
 
@@ -20,6 +21,7 @@ function FourOFour() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexDirection: "column",
           marginTop: "4rem",
           marginBottom: "2rem",
         }}
@@ -30,6 +32,7 @@ function FourOFour() {
         >
           Houston, that's a 404.
         </h1>
+        <Link to="/" style={{ marginTop: "1rem", fontSize: "21px"}}>Let's get you home, bud.</Link>
       </div>
     </>
   )
