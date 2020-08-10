@@ -1,6 +1,6 @@
 ---
 title: "Know Your Samourai — Replace-by-Fee"
-date: "2020-04-15"
+date: "2020-05-01"
 year: "2020"
 tags: ["bitcoin", "samourai"]
 ---

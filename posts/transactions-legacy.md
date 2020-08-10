@@ -1,6 +1,6 @@
 ---
 title: "Bitcoin Bytes — Legacy Transactions"
-date: "2020-05-01"
+date: "2020-06-01"
 year: "2020"
 tags: ["bitcoin"]
 ---
