@@ -11,7 +11,7 @@ Replace-by-Fee (RBF) is a concept by which a wallet can broadcast a transaction 
 
 This RBF ability is useful because it allows a user to broadcast a transaction with very little mining fee (say this user is not in a hurry to see the payment go through), and then later on change their mind and "bump" up their fee in order to hasten the mining of the transaction. 
 
-The feature has potential implications for the continuing development of a well liquid fee market, as participants can in theory "lowball" their fees and later on bump them up as needed, leading to better price discovery for fees. It is a fairly used feature—about [10% of transactions signal as _Opt-in-RBF_ enabled](https://transactionfee.info/charts/transactions-signaling-explicit-rbf/) (the variant this article will focus on)—and it is likely to continue being used in the future as block space becomes more and more compteted for.
+The feature has potential implications for the continuing development of a well liquid fee market, as participants can in theory "lowball" their fees and later on bump them up as needed, leading to better price discovery for fees. It is a fairly used feature—about [10% of bitcoin transactions signal as _Opt-in-RBF_ enabled](https://transactionfee.info/charts/transactions-signaling-explicit-rbf/) (the variant this article will focus on)—and it is likely to continue being used in the future as block space becomes more and more compteted for.
 
 ## Network Level
 

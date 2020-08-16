@@ -5,7 +5,7 @@ year: "2020"
 tags: ["bitcoin", "samourai"]
 ---
 
-Ricochet is a feature that allows users to put a form of "distance" between two UTXOs. It is a very simple procedure, developed to respond to a type of equally very simple heuristic that is sometimes used by chain analysis tools.
+Ricochet is a feature that allows users to put a form of "distance" between two UTXOs. It is a simple procedure, developed to respond to a type of equally simple heuristic that is sometimes used by chain analysis tools.
 
 <center>
   <figure style="max-width: 600px; margin: 3rem 0;">
@@ -17,7 +17,7 @@ Ricochet is a feature that allows users to put a form of "distance" between two 
 
 > **Know your Samourai** is a series of articles diving head first into Samourai, a bitcoin wallet focused on privacy. The articles are aimed at chewing through one by one the set of features the wallet offers from a curious user perspective. We do things like following UTXOs through a Ricochet transaction, for example, in order to gain deep intuition as to what is happening every time we use the wallet. Check out the [introduction article](#) for an overview of the series' goals and the tools recommended to get the most out of it.
 
-A good example of where a ricochet transaction might be useful is how certain exchanges have been known to refuse accepting a payment made with a utxo that has proximity to a coinjoin. The term _proximity_ here is meant to be interpreted as "the number of transactions done between the payment transaction and the coinjoin transaction". Because going back into UTXO histories is computationally costly, chain analysis tools only go so far back. The goal of ricochet is to put just a few more transactions between the payor and the payee than would be investigated by most chain analysis tools.
+An example of where a ricochet transaction might be useful is where certain exchanges have been known to refuse payments made with UTXOs that had proximity to coinjoins. The term _proximity_ here is meant to be interpreted as "the number of transactions done between the payment transaction and the coinjoin transaction". Because going back into UTXO histories is computationally costly, chain analysis tools only go so far back. The goal of ricochet is to put just a few more transactions between the payor and the payee than would be investigated by most chain analysis tools.
 
 Take for example the situation where a chain analysis tool would flag a payment as being troublesome if it was 1 step removed from a known address it considered tainted for whatever reason. If you had recieved payment from that address and send that UTXO to an exchange, the chain analysis tool they use would (1) ensure your UTXO is not tainted, and (2) look at the UTXO _it came from_ and see if that UTXO is tainted. In this case it would be, and your payment would be flagged as non valid.
 
@@ -25,13 +25,13 @@ Take for example the situation where a chain analysis tool would flag a payment 
 tainted_utxo -> your_utxo -> exchange
 ```
 
-But again, going back into every UTXO history is resource intensive; understanding this, samourai plays on that weakness and allows you to simply send your payment from one address to another a few times in a row, in effect creating hops between your initial utxo and the one that the exchange will recieve.
+The number of transactions chain analysis tools might look into can change, but again, going back into every UTXO history is resource intensive, and the furthest you go the more it is; understanding this, samourai plays on that weakness and allows you to simply send your payment from one address to another a few times in a row, in effect creating hops between your initial utxo and the one that the final payee (in this example the exchange) will recieve.
 
 ```md
 tainted_utxo -> your_utxo -> hop1 -> hop2 -> hop3 -> hop4 -> exchange
 ```
 
-Now a chain analysis tool going back only, say, 3 hops, will not find anything tainted about any of the utxos on the chain leading up to your payment.
+Now a chain analysis tool going back only, say, 3 hops, will not find anything tainted about any of the utxos on the chain leading up to the payment.
 
 ## Ricochet in Practice
 
@@ -133,3 +133,7 @@ Once in your _Send_ screen, use the ricochet toggle button to turn your regular 
 </center>
 
 Notice that the transactions we explored above were all broadcasted at the same time and included in the same block. Samourai offers the option to stagger each transaction into their own block by waiting for the first hop to be mined before broadasting the second hop, and so on. This increases privacy protection one step further by working against tools that would incorporate time correlations in their analysis. It is offered at no extra cost, and should be your default ricochet type unless you are in a time crunch.
+
+<br />
+
+Check out the next article in the series, where we delve into a common fee bumping techique, [replace-by-fee](/replace-by-fee).
