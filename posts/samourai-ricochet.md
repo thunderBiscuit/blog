@@ -1,6 +1,6 @@
 ---
 title: "Know your Samourai — Ricochet"
-date: "2020-04-02"
+date: "2020-04-01"
 year: "2020"
 tags: ["bitcoin", "samourai"]
 ---
