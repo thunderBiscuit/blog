@@ -36,13 +36,14 @@
     "acorn": "^6.4.1",
     "minimist": "^1.2.3",
     "kind-of": "^6.0.3",
-    "dot-prop": "^4.2.1"
+    "dot-prop": "^4.2.1",
+    "bl": "^3.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thunderBiscuit/blog"
+    "url": "https://github.com/thunderbiscuit/blog"
   },
   "bugs": {
-    "url": "https://github.com/thunderBiscuit/blog/issues"
+    "url": "https://github.com/thunderbiscuit/blog/issues"
   }
 }
