@@ -37,7 +37,8 @@
     "minimist": "^1.2.3",
     "kind-of": "^6.0.3",
     "dot-prop": "^4.2.1",
-    "bl": "^3.0.1"
+    "bl": "^3.0.1",
+    "http-proxy": "^1.18.1"
   },
   "repository": {
     "type": "git",
