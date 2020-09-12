@@ -38,7 +38,8 @@
     "kind-of": "^6.0.3",
     "dot-prop": "^4.2.1",
     "bl": "^3.0.1",
-    "http-proxy": "^1.18.1"
+    "http-proxy": "^1.18.1",
+    "yargs-parser": "13.1.2"
   },
   "repository": {
     "type": "git",
