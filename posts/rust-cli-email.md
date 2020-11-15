@@ -5,7 +5,7 @@ year: "2019"
 tags: ["rust", "cli-apps"]
 ---
 
-> The Tiny Rust-CLI series is a series of blog posts about small cool command line interface apps I build just for the fun of Rust and discovering crates. Check out the one that returns the current price of bitcoin [here]().
+> The Tiny Rust-CLI series is a series of blog posts about small cool command line interface apps I build just for the fun of Rust and discovering crates. Check out the one that returns the current price of bitcoin [here](#).
 
 ## What we'll need
 
