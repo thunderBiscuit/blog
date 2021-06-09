@@ -11,7 +11,7 @@ export default ({ data }) => (
 
     <div style={{ marginTop: "4rem" }}>
       <h5 className="title is-5" style={{ marginBottom: "2rem" }}>
-        2020
+        2021
         <span style={{ color: "#bdbdbd" }}>
           {" "}
           — {data.twentyone.totalCount} Posts
