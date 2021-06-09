@@ -46,6 +46,8 @@ class tagsPage extends React.Component {
         <TagButton onClick={this.handleClick} name={"bitcoin"} id={"bitcoin"} />
         <TagButton onClick={this.handleClick} name={"samourai"} id={"samourai"} />
         <TagButton onClick={this.handleClick} name={"rust"} id={"rust"} />
+        <TagButton onClick={this.handleClick} name={"kotlin"} id={"kotlin"} />
+        <TagButton onClick={this.handleClick} name={"podman"} id={"podman"} />
         <TagButton
           onClick={this.handleClick}
           name={"cli-apps"}

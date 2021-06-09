@@ -14,6 +14,18 @@ export default ({ data }) => (
         2020
         <span style={{ color: "#bdbdbd" }}>
           {" "}
+          — {data.twentyone.totalCount} Posts
+        </span>
+      </h5>
+      {data.twentyone.edges.map(({ node }) => (
+        <PostLink node={node} />
+      ))}
+    </div>
+    <div style={{ marginTop: "7rem" }}>
+      <h5 className="title is-5" style={{ marginBottom: "2rem" }}>
+        2020
+        <span style={{ color: "#bdbdbd" }}>
+          {" "}
           — {data.twenty.totalCount} Posts
         </span>
       </h5>
@@ -59,6 +71,24 @@ export const query = graphql`
     twenty: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { year: { eq: "2020" } } }
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD MMM, YYYY")
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    twentyone: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { year: { eq: "2021" } } }
     ) {
       totalCount
       edges {
